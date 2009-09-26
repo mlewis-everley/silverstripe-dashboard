@@ -1,0 +1,17 @@
+Please see the file INSTALL for install instructions:
+
+A very basic dashboard that displays recently the 10 most recenly edited pages,
+10 most recently uploaded files and all unmoderated comments.
+
+This project makes use of the Crystal "Open Source" Icon set found at:
+http://www.everaldo.com/crystal/
+
+I will try and add new features on a semi regular basis but any issues, comments
+or feedback please post on the forums, mailing list or Sourceforge project page
+(https://sourceforge.net/tracker/?group_id=280040).
+
+Or you could email me at m.lewis.everley@googlemail.com
+
+Thank you,
+
+Mo

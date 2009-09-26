@@ -1,0 +1,9 @@
+Thank you for downloading the Silverstripe Dashboard module.
+
+Currently maintained by Mo and loosley based on the Dashboard Todo Prototype by Grayzag.
+
+Install Instructions:
+ 1) Upload the Silverstripe Dashboard module to the "dashboard" folder in your
+    SilverStripe root folder
+ 2) Run dev/build?flush=1
+ 3) Login to your administration panel - hopefully it works!

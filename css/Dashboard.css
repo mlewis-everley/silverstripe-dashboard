@@ -1,0 +1,140 @@
+#Dashboard {
+	border-top:1px solid #aaa !important;
+}
+
+#Dashboard b {
+	font-size:12px;
+}
+
+#Dashboard .floatright {
+	float:right;
+	margin-right:3px;
+}
+
+#Dashboard li.dotted {
+	border-bottom: 1px dotted #ccc;
+}
+
+#Dashboard .addition {
+	color: #aaa;
+	font-size: 8pt;
+}
+
+#Dashboard a.edit {
+	width: 16px;
+	height: 16px;
+	float: right;
+	background: url(../images/16/edit.png) no-repeat 50% 50%;
+}
+
+#Dashboard a.edit span {
+	display: none;
+}
+
+#Dashboard h2 a,
+#Dashboard h3 a {
+	font-size: 8pt;
+	padding: 0 5px; 
+}
+
+#Dashboard h1 {
+	padding-left: 45px;
+	margin-top: 0.5em;
+	background: url(../images/32/dashboard.png) no-repeat 0 50%;
+	float: left;
+}
+
+#Dashboard h2 {
+	background: #f2f2f2;
+	font-size: 130% !important;
+	margin-bottom: 5px;
+	line-height: 2.5em;
+	padding-left: 30px;
+	background-position: 4px 50%;
+	background-repeat: no-repeat;
+}
+
+#Dashboard h3 {
+	font-size: 8pt;
+	margin-bottom: 0.5em;
+	color: #333333;
+}
+
+#Dashboard p {
+	font-size: 8pt;
+	color: #333333;
+}
+
+#Dashboard li {
+	padding-bottom: 0.5em;
+	padding: 1%;
+}
+
+#Dashboard li:hover {
+	background-color: #f2f2f2;
+}
+
+#Dashboard .SiteInfo {
+	float: right;
+	width: 33%;
+	margin-bottom: 1%;
+}
+
+#Dashboard .SiteInfo p {
+	padding-left: 1%;
+}
+
+#Dashboard .Items {
+	overflow: auto;
+	height: 100% !important;
+	clear: both;
+}
+
+#Dashboard .dashboardItem {
+	padding:3px;
+	border:1px solid #ccc;
+	margin-bottom:3px;
+	overflow:auto;
+}
+
+#Dashboard .Activity h2 {
+	background-image: url("../images/22/refresh.png");
+}
+
+#Dashboard .Comments h2 {
+	background-image: url("../images/22/chat.png");
+}
+
+#Dashboard .SiteInfo h2 {
+	background-image: url("../images/22/blackbox.png");
+}
+
+#Dashboard .Comments ul {
+	padding-top: 0.5%;
+}
+
+#Dashboard .Comments li {
+	padding-bottom: 1%;
+	margin-bottom: 1%;
+	margin-left: 1%;
+	line-height: 1.75em;
+	width: 46.5%;
+	float: left;
+}
+
+#Dashboard .snippet {
+	float:left;
+	width:47.4%;
+	padding: 1%;
+	min-height: 140px;
+	border:1px solid #f2f2f2;
+}
+
+#Dashboard .snLeft {
+	margin-right: 0.5%;
+}
+
+#Dashboard img.loader {
+	display: block;
+	margin:auto;
+}
