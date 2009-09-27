@@ -1,6 +1,8 @@
 <?php
-Director::addRules(100, array(
-	'admin/0' => 'Dashboard'
+Director::addRules(50, array(
+	'admin/dashboard'	=> 'DashboardAdmin'
 ));
 
-Object::add_extension('CMSMain', 'Dashboard_Extension');
+CMSMain::$url_segment = 'cms';
+
+CMSMenu::replace_menu_item('CMSMain', 'Site Content', 'admin/cms/', null, 10);

@@ -1,9 +1,5 @@
-<div id="Dashboard" class="tab">
-	<h1 id="DashboardTitle"><% _t('DASHBOARD', 'Site Content') %></h1>
-	<div class="dashboardItem SiteInfo">
-		<h2>Your site at a glance:</h2>
-		<p>$SiteInfo</p>
-	</div>
+<div class="Dashboard tab">
+	<h1 id="DashboardTitle"><% _t('DASHBOARD', 'Dashboard') %></h1>
 	<% control Alerts %>
 		<div class="alert">$Content</div>
 	<% end_control %>
@@ -14,18 +10,21 @@
 		<div class="dashboardItem Activity">
 			<h2><% _t('RECENTACTIVITY', 'Recent Activity') %></h2>
 			<div class="snippet snLeft">
-				<h3>Recently Edited</h3>
+				<h3>
+					<a href="admin/cms/" title="View all pages" class="floatright">View All</a>
+					Recently Edited
+				</h3>
 				<p>Your sites 10 most recently edited pages.</p>
 				<ul><% control RecentPages %>
 					<li>
-						<a class="edit" title="edit" href="admin/show/$ID"><span>Edit</span></a>
+						<a class="edit" title="edit" href="admin/cms/show/$ID"><span>Edit</span></a>
 						<a href="$Link">$Title</a> <span class="addition">$LastEdited.Ago</span>
 					</li>
 				<% end_control %></ul>
 			</div>
 			<div class="snippet">
 				<h3>
-					<a href="admin/comments/" class="floatright">View All</a>
+					<a href="admin/assets/" title="View all files" class="floatright">View All</a>
 					Recent Files
 				</h3>
 				<p>Your sites 10 most recently uploaded/edited files</p>
@@ -40,7 +39,7 @@
 		
 		<div class="dashboardItem Comments">
 			<h2>
-				<a href="admin/comments/" class="floatright">View All</a>
+				<a href="admin/comments/" title="View comments" class="floatright">View All</a>
 				<% _t('UMODCOMMENTS', 'Unmoderated comments') %>
 			</h3>
 			<ul><% control CommentUMod %>
