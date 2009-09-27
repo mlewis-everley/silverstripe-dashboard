@@ -11,16 +11,20 @@
 			<h2><% _t('RECENTACTIVITY', 'Recent Activity') %></h2>
 			<div class="snippet snLeft">
 				<h3>
-					<a href="admin/cms/" title="View all pages" class="floatright">View All</a>
+					<a href="admin/content/" title="View all pages" class="floatright">View All</a>
 					Recently Edited
 				</h3>
 				<p>Your sites 10 most recently edited pages.</p>
-				<ul><% control RecentPages %>
-					<li>
-						<a class="edit" title="edit" href="admin/cms/show/$ID"><span>Edit</span></a>
-						<a href="$Link">$Title</a> <span class="addition">$LastEdited.Ago</span>
-					</li>
-				<% end_control %></ul>
+				<% if RecentPages %>
+					<ul><% control RecentPages %>
+						<li>
+							<a class="edit" title="edit" href="admin/content/show/$ID"><span>Edit</span></a>
+							<a href="$Link">$Title</a> <span class="addition">$LastEdited.Ago</span>
+						</li>
+					<% end_control %></ul>
+				<% else %>
+					<p><em>You currently have no pages</em></p>
+				<% end_if %>
 			</div>
 			<div class="snippet">
 				<h3>
@@ -28,12 +32,16 @@
 					Recent Files
 				</h3>
 				<p>Your sites 10 most recently uploaded/edited files</p>
-				<ul><% control RecentFiles %>
-					<li>
-						<a class="edit" title="edit" href="admin/assets/EditForm/field/Files/item/$ID/edit" target="_blank"><span>Edit</span></a>
-						<a href="$Link">$Title</a> <span class="addition">$LastEdited.Ago</span>
-					</li>
-				<% end_control %></ul>
+				<% if RecentFiles %>
+					<ul><% control RecentFiles %>
+						<li>
+							<a class="edit" title="edit" href="admin/assets/EditForm/field/Files/item/$ID/edit" target="_blank"><span>Edit</span></a>
+							<a href="$Link">$Title</a> <span class="addition">$LastEdited.Ago</span>
+						</li>
+					<% end_control %></ul>
+				<% else %>
+					<p><em>You currently have no files</em></p>
+				<% end_if %>
 			</div>
 		</div>
 		
@@ -42,13 +50,17 @@
 				<a href="admin/comments/" title="View comments" class="floatright">View All</a>
 				<% _t('UMODCOMMENTS', 'Unmoderated comments') %>
 			</h3>
-			<ul><% control CommentUMod %>
-				<li class="dotted <% if Even %>snLeft<% end_if %>">
-					By <strong>$Name</strong> at <% if CommenterURL %><a href="$CommenterURL">$CommenterURL</a><% end_if %> for page/post: <% control Parent %><a href="$Link">$Title</a><% end_control %><br/>
-					<em>"$Comment"</em><br/>
-					<span class="addition">Written $Created.Ago</span>
-				</li>
-			<% end_control %>
+			<% if CommentMod %>
+				<ul><% control CommentUMod %>
+					<li class="dotted <% if Even %>snLeft<% end_if %>">
+						By <strong>$Name</strong> at <% if CommenterURL %><a href="$CommenterURL">$CommenterURL</a><% end_if %> for page/post: <% control Parent %><a href="$Link">$Title</a><% end_control %><br/>
+						<em>"$Comment"</em><br/>
+						<span class="addition">Written $Created.Ago</span>
+					</li>
+				<% end_control %>
+			<% else %>
+				<p><em>There are currently no unmoderated comments</em></p>
+			<% end_if %>
 			</ul>
 		</div>
 	</div>

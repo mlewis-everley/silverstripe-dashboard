@@ -7,7 +7,7 @@ class DashboardAdmin extends LeftAndMain {
 	
 	static $menu_priority = 99;
 	
-	static $url_priority = 49;
+	static $url_priority = 41;
 
 	/**
 	 * Initialisation method called before accessing any functionality that RandomLinksAdmin has to offer
@@ -20,16 +20,19 @@ class DashboardAdmin extends LeftAndMain {
 	}
 	
 	public function SiteInfo() {
-		$pages = DataObject::get('SiteTree');
-		$pages = $pages ? $pages->Count() : 0;
+		$pages		= DataObject::get('SiteTree');
+		$pages		= $pages ? $pages->Count() : 0;
+		$pagesStr	= ($pages = 1) ? 'pages' : 'page';
 
-		$files = DataObject::get('File', "ClassName <> 'Folder'");
-		$files = $files ? $files->Count() : 0;
+		$files		= DataObject::get('File', "ClassName <> 'Folder'");
+		$files		= $files ? $files->Count() : 0;
+		$filesStr	= ($files = 1) ? 'files' : 'file';
 		
-		$members = DataObject::get('Member');
-		$members = $members ? $members->Count() : 0;
+		$members	= DataObject::get('Member');
+		$members	= $members ? $members->Count() : 0;
+		$membersStr	= ($members = 1) ? 'members' : 'member';
 
-		$output = "$pages page(s)<br/>$files file(s)<br/>$members member(s)";
+		$output = "$pages $pagesStr<br/>$files $filesStr<br/>$members $membersStr";
 		
 		return $output;
 	}

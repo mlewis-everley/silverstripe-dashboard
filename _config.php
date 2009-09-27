@@ -1,8 +1,6 @@
 <?php
 Director::addRules(50, array(
-	'admin/dashboard'	=> 'DashboardAdmin'
+	'admin/content//$Action/$ID/$OtherID' => 'DsCMSMain'
 ));
 
-CMSMain::$url_segment = 'cms';
-
-CMSMenu::replace_menu_item('CMSMain', 'Site Content', 'admin/cms/', null, 10);
+CMSMenu::remove_menu_item('CMSMain');
