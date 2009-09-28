@@ -14,7 +14,7 @@
 					<a href="admin/content/" title="View all pages" class="floatright">View All</a>
 					Recently Edited
 				</h3>
-				<p>Your sites 10 most recently edited pages.</p>
+				<p>Your site's most recently edited pages.</p>
 				<% if RecentPages %>
 					<ul><% control RecentPages %>
 						<li>
@@ -23,7 +23,7 @@
 						</li>
 					<% end_control %></ul>
 				<% else %>
-					<p><em>You currently have no pages</em></p>
+					<p><em>You site currently has no pages</em></p>
 				<% end_if %>
 			</div>
 			<div class="snippet">
@@ -31,7 +31,7 @@
 					<a href="admin/assets/" title="View all files" class="floatright">View All</a>
 					Recent Files
 				</h3>
-				<p>Your sites 10 most recently uploaded/edited files</p>
+				<p>Your site's most recently uploaded/edited files</p>
 				<% if RecentFiles %>
 					<ul><% control RecentFiles %>
 						<li>
@@ -40,7 +40,7 @@
 						</li>
 					<% end_control %></ul>
 				<% else %>
-					<p><em>You currently have no files</em></p>
+					<p><em>Your site currently has no files</em></p>
 				<% end_if %>
 			</div>
 		</div>
@@ -59,7 +59,7 @@
 					</li>
 				<% end_control %>
 			<% else %>
-				<p><em>There are currently no unmoderated comments</em></p>
+				<p><em>Your site currently has no unmoderated comments</em></p>
 			<% end_if %>
 			</ul>
 		</div>
