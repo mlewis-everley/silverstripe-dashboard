@@ -22,15 +22,15 @@ class DashboardAdmin extends LeftAndMain {
 	public function SiteInfo() {
 		$pages		= DataObject::get('SiteTree');
 		$pages		= $pages ? $pages->Count() : 0;
-		$pagesStr	= ($pages == 1) ? 'pages' : 'page';
+		$pagesStr	= ($pages == 1) ? 'page' : 'pages';
 
 		$files		= DataObject::get('File', "ClassName <> 'Folder'");
 		$files		= $files ? $files->Count() : 0;
-		$filesStr	= ($files == 1) ? 'files' : 'file';
+		$filesStr	= ($files == 1) ? 'file' : 'files';
 		
 		$members	= DataObject::get('Member');
 		$members	= $members ? $members->Count() : 0;
-		$membersStr	= ($members == 1) ? 'members' : 'member';
+		$membersStr	= ($members == 1) ? 'member' : 'members';
 
 		$output = "$pages $pagesStr<br/>$files $filesStr<br/>$members $membersStr";
 		
