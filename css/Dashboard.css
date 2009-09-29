@@ -107,6 +107,10 @@
 	background-image: url("../images/22/blackbox.png") !important;
 }
 
+.Dashboard .SSNews h2 {
+	background-image: url("../images/22/feed") !important;
+}
+
 .Dashboard .Comments ul {
 	padding-top: 0.5%;
 }
@@ -135,4 +139,8 @@
 .Dashboard img.loader {
 	display: block;
 	margin:auto;
+}
+
+.Dashboard .SSNews li {
+	margin-bottom: 1em;
 }
