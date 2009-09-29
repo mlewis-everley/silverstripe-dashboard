@@ -1,6 +1,6 @@
 /**
  * This file overwrites the default behaviour for the left hand pane under "Site Content",
- * allowing for AJAX requests to the URL admin/content as apposed to just admin
+ * allowing for AJAX requests to the URL admin/cms as apposed to just admin
  */
 
 /* ---------------------------------------------------------- */
