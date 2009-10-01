@@ -11,14 +11,14 @@
 			<h2><% _t('RECENTACTIVITY', 'Recent Activity') %></h2>
 			<div class="snippet snLeft">
 				<h3>
-					<a href="admin/content/" title="View all pages" class="floatright">View All</a>
+					<a href="admin/cms/" title="View all pages" class="floatright">View All</a>
 					Recently Edited
 				</h3>
 				<p>Your site's most recently edited pages.</p>
 				<% if RecentPages %>
 					<ul><% control RecentPages %>
 						<li>
-							<a class="edit" title="edit" href="admin/content/show/$ID"><span>Edit</span></a>
+							<a class="edit" title="edit" href="admin/cms/show/$ID"><span>Edit</span></a>
 							<a href="$Link">$Title</a> <span class="addition">$LastEdited.Ago</span>
 						</li>
 					<% end_control %></ul>
