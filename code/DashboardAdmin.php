@@ -9,6 +9,21 @@ class DashboardAdmin extends LeftAndMain {
 	static $menu_title = 'Dashboard';
 	static $menu_priority = 99;
 	static $url_priority = 41;
+	
+	/**
+	 * The variables below can be changed from your _config.php file to alter some of the dashboard functionality.	 * 
+	 * 
+	 * @var $rss_url sets the url of the RSS feed
+	 * @var $limit_pages = The number of recently edited pages that will be displayed
+	 * @var $limit_files = The number of recently edited files that will be displayed
+	 * @var $limit_ucomments = The number of unmodderated comments that will appear
+	 * 
+	 */
+	static $rss_url = 'http://www.silverstripe.org/blog/rss';
+	static $limit_pages = 10;
+	static $limit_files = 10;
+	static $limit_ucomments = 10;
+
 
 	/**
 	 * Initialisation method called before accessing any functionality that RandomLinksAdmin has to offer
@@ -21,7 +36,7 @@ class DashboardAdmin extends LeftAndMain {
 	}
 	
 	/**
-	 * SiteInfo gets a wuick summary of all items in SiteTree, all Files (excluding folders) and members.
+	 * SiteInfo gets a quick summary of all items in SiteTree, all Files (excluding folders) and members.
 	 * 
 	 * @return DataObjectSet
 	 */
@@ -62,22 +77,22 @@ class DashboardAdmin extends LeftAndMain {
 	 * @return DataObjectSet 
 	 */
 	public function RecentPages() {
-		$pages = DataObject::get("SiteTree", NULL, "`LastEdited` DESC", NULL, "0, 10");
+		$pages = DataObject::get("SiteTree", NULL, "`LastEdited` DESC", NULL, "0,".self::$limit_pages);
 		return $pages;
 	}
 	
 	public function RecentFiles() {
-		$pages = DataObject::get("File", "ClassName <> 'Folder'", "`LastEdited` DESC", NULL, "0, 10");
+		$pages = DataObject::get("File", "ClassName <> 'Folder'", "`LastEdited` DESC", NULL, "0,".self::$limit_files);
 		return $pages;
 	}
 	
 	public function CommentUMod() {
-		$pages = DataObject::get("PageComment", "NeedsModeration = '1'", "`Created` DESC", NULL, "0, 10");
+		$pages = DataObject::get("PageComment", "NeedsModeration = '1'", "`Created` DESC", NULL, "0,".self::$limit_ucomments);
 		return $pages;
 	}
 	
 	/**
-	 * Uses SimplePie to pull in the Silverstripe news feed, process and cast it, then output it to a DataObjectSet
+	 * Uses SimplePie to pull in the news feed from $rss_url variable, process and cast it, then output it to a DataObjectSet
 	 * 
 	 * @return DataObjectSet 
 	 */
@@ -88,7 +103,7 @@ class DashboardAdmin extends LeftAndMain {
 		include_once(Director::getAbsFile(SAPPHIRE_DIR . '/thirdparty/simplepie/SimplePie.php'));
 		
 		$t1 = microtime(true);
-		$feed = new SimplePie('http://www.silverstripe.org/blog/rss', TEMP_FOLDER);
+		$feed = new SimplePie(self::$rss_url, TEMP_FOLDER);
 		$feed->init();
 		if($items = $feed->get_items(0, 2)) {
 			foreach($items as $item) {

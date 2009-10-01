@@ -7,10 +7,12 @@
 
 // Overwrite main Ajax scripts for site tree
 if(typeof SiteTreeHandlers == 'undefined') SiteTreeHandlers = {};
-SiteTreeHandlers.parentChanged_url	= 'admin/content/ajaxupdateparent';
-SiteTreeHandlers.orderChanged_url	= 'admin/content/ajaxupdatesort';
-SiteTreeHandlers.loadPage_url		= 'admin/content/getitem';
-SiteTreeHandlers.loadTree_url		= 'admin/content/getsubtree';
+SiteTreeHandlers.parentChanged_url	= 'admin/cms/ajaxupdateparent';
+SiteTreeHandlers.orderChanged_url	= 'admin/cms/ajaxupdatesort';
+SiteTreeHandlers.loadPage_url		= 'admin/cms/getitem';
+SiteTreeHandlers.loadTree_url		= 'admin/cms/getsubtree';
+SiteTreeHandlers.showRecord_url = 'admin/cms/show/';
+SiteTreeHandlers.controller_url = 'admin/cms/';
 
 /* ---------------------------------------------------------- */
 
@@ -47,8 +49,8 @@ SidePanel.prototype = {
 		var id = $('Form_EditForm').elements.ID;
 		if(id) id = id.value; else id = "";
 		
-		// This assumes that admin/content/ refers to CMSMain
-		var url = 'admin/content/' + srcName + '/' + id + '?ajax=1';
+		// This assumes that admin/cms/ refers to CMSMain
+		var url = 'admin/cms/' + srcName + '/' + id + '?ajax=1';
 		if($('Form_EditForm_Locale')) url += "&locale=" + $('Form_EditForm_Locale').value;
 		return url;
 	},
@@ -80,7 +82,7 @@ VersionList.prototype = {
 	select : function(pageID, versionID, sourceEl) {
 		if(this.mode == 'view') {
 			sourceEl.select();
-			var url = 'admin/content/getversion/' + pageID + '/' + versionID;
+			var url = 'admin/cms/getversion/' + pageID + '/' + versionID;
 			if($('Form_EditForm_Locale')) url += "?locale=" + $('Form_EditForm_Locale').value;
 			$('Form_EditForm').loadURLFromServer(url);
 			$('viewArchivedSite').style.display = '';
@@ -93,7 +95,7 @@ VersionList.prototype = {
 				sourceEl.select();
 				this.otherSourceEl.select(true);
 				statusMessage('Loading comparison...');
-				var url = 'admin/content/compareversions/' + pageID + '/?From=' + this.otherVersionID + '&To=' + versionID;
+				var url = 'admin/cms/compareversions/' + pageID + '/?From=' + this.otherVersionID + '&To=' + versionID;
 				if($('Form_EditForm_Locale')) url += "&locale=" + $('Form_EditForm_Locale').value;
 				$('Form_EditForm').loadURLFromServer(url);
 			} else {
@@ -156,7 +158,7 @@ SideReports.prototype = {
 		SideReportRecord.applyTo('#' + this.id + ' a');
 	},
 	ajaxURL: function() {
-		var url = 'admin/content/sidereport/' + this.selector.value;
+		var url = 'admin/cms/sidereport/' + this.selector.value;
 		if($('LangSelector')) url += "?locale=" + $('LangSelector').value;
 		return url;
 	}
