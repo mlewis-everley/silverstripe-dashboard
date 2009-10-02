@@ -23,6 +23,7 @@ class DashboardAdmin extends LeftAndMain {
 	static $limit_pages = 10;
 	static $limit_files = 10;
 	static $limit_ucomments = 10;
+	static $svn_url = 'http://open.silverstripe.org/browser/modules/sapphire/tags';
 
 
 	/**
@@ -98,11 +99,10 @@ class DashboardAdmin extends LeftAndMain {
 	 */
 	
 	function LatestSSNews() {
-		$output = new DataObjectSet();
-		
 		include_once(Director::getAbsFile(SAPPHIRE_DIR . '/thirdparty/simplepie/SimplePie.php'));
 		
-		$t1 = microtime(true);
+		$output = new DataObjectSet();
+		
 		$feed = new SimplePie(self::$rss_url, TEMP_FOLDER);
 		$feed->init();
 		if($items = $feed->get_items(0, 2)) {
@@ -119,6 +119,30 @@ class DashboardAdmin extends LeftAndMain {
 				// Cast the description and strip
 				$desc = new Text('Description');
 				$desc->setValue(strip_tags($item->get_description()));
+
+				$output->push(new ArrayData(array(
+					'Title'			=> $title,
+					'Date'			=> $date,
+					'Link'			=> $item->get_link(),
+					'Description'	=> $desc
+				)));
+			}
+			return $output;
+		}
+	}
+	
+	public function CheckVersion() {
+		include_once(Director::getAbsFile(SAPPHIRE_DIR . '/thirdparty/simplepie/SimplePie.php'));
+		
+		$output = new DataObjectSet();
+		
+		$feed = new SimplePie(self::$svn_url, TEMP_FOLDER);
+		$feed->init();
+		if($items = $feed->get_items()) {
+			foreach($items as $item) {
+				// Cast the Title
+				$title = new Text('Title');
+				$title->setValue($item->get_title());
 
 				$output->push(new ArrayData(array(
 					'Title'			=> $title,
