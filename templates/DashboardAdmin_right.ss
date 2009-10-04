@@ -1,11 +1,9 @@
 <div class="Dashboard tab">
+	<% if GetUpdates %>
+		<div class="Updates">$GetUpdates</div>
+	<% end_if %>
 	<h1 id="DashboardTitle"><% _t('DASHBOARD', 'Dashboard') %></h1>
-	<% control Alerts %>
-		<div class="alert">$Content</div>
-	<% end_control %>
-	<% control Notices %>
-		<div class="notice">$Content</div>
-	<% end_control %>
+	
 	<div class="Items">
 		<div class="dashboardItem Activity">
 			<h2><% _t('RECENTACTIVITY', 'Recent Activity') %></h2>

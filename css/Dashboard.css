@@ -45,7 +45,6 @@
 	padding-left: 45px;
 	margin: 0.5em 0 1em 0;
 	background: url(../images/32/dashboard.png) no-repeat 0 50%;
-	float: left;
 }
 
 .Dashboard h2 {
@@ -83,6 +82,13 @@
 .Dashboard .SiteInfo p {
 	padding-left: 1%;
 }
+
+.Dashboard .Updates {
+	padding: 10px;
+	background: #f2f2f2;
+	border: 1px solid #ccc;
+	font-size: 130%;
+} 
 
 .Dashboard .Items {
 	clear: both;

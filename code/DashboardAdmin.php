@@ -13,17 +13,18 @@ class DashboardAdmin extends LeftAndMain {
 	/**
 	 * The variables below can be changed from your _config.php file to alter some of the dashboard functionality.	 * 
 	 * 
-	 * @var $rss_url sets the url of the RSS feed
+	 * @var $rss_url = sets the url of the RSS feed
 	 * @var $limit_pages = The number of recently edited pages that will be displayed
 	 * @var $limit_files = The number of recently edited files that will be displayed
 	 * @var $limit_ucomments = The number of unmodderated comments that will appear
+	 * @var $ss_link = The link to download the latest Silverstripe
 	 * 
 	 */
 	static $rss_url = 'http://www.silverstripe.org/blog/rss';
 	static $limit_pages = 10;
 	static $limit_files = 10;
 	static $limit_ucomments = 10;
-	static $svn_url = 'http://open.silverstripe.org/browser/modules/sapphire/tags';
+	static $ss_link = 'http://www.silverstripe.org/stable-download/';
 
 
 	/**
@@ -131,28 +132,43 @@ class DashboardAdmin extends LeftAndMain {
 		}
 	}
 	
-	public function CheckVersion() {
-		include_once(Director::getAbsFile(SAPPHIRE_DIR . '/thirdparty/simplepie/SimplePie.php'));
+	/**
+	 * The GetUpdates method screenscrapes the html interface of the silverstripe SVN repo and retrieves the latest
+	 * version number, then compares that to the current version number. If the SVN version is greater, it flags an
+	 * update message. 
+	 * 
+	 * @return A message with info about updating.
+	 */
+	
+	public function GetUpdates() {
+		// Initial variables about SVN location and Current version
+		$url = 'http://svn.silverstripe.com/open/modules/sapphire/tags/';
+		$verList = array();
+		$curVersion = LeftAndMain::CMSVersion();
+		$curVersion = floor(str_replace(array('.','/'),'',$curVersion));
 		
-		$output = new DataObjectSet();
+		// Get HTML from Silverstripe SVN browser, then pull out all A tags
+		$doc = new DOMDocument();
+		$doc->loadHTMLFile($url);
+		$items = $doc->getElementsByTagName('a');
 		
-		$feed = new SimplePie(self::$svn_url, TEMP_FOLDER);
-		$feed->init();
-		if($items = $feed->get_items()) {
-			foreach($items as $item) {
-				// Cast the Title
-				$title = new Text('Title');
-				$title->setValue($item->get_title());
-
-				$output->push(new ArrayData(array(
-					'Title'			=> $title,
-					'Date'			=> $date,
-					'Link'			=> $item->get_link(),
-					'Description'	=> $desc
-				)));
-			}
-			return $output;
+		// Loop trough all A tags and attempt to convert their value to Int. If success
+		// add the value to $verList array. 
+		foreach($items as $item) {
+			$result = $item->nodeValue;
+			$strip = str_replace(array('.','/'), '', $result);
+			
+			if(floor($strip))
+				array_push($verList,$result);
 		}
+		
+		// Retrieve the last item in the $verList array and converty to int
+		$latest = floor(str_replace(array('.','/'), '', $verList[count($verList) - 1]));
+		
+		// If latest version if later than current version, return an update message.
+		if($latest > $curVersion)
+			return 'Silverstripe ' . str_replace('/','',$verList[count($verList) - 1]) . ' is available. The latest version can be found <a href="' . self::$ss_link . '" title="Silverstripe download page">here</a>, or update your SVN.';
+		
 	}
 }
 
