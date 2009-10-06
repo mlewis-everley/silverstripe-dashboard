@@ -54,8 +54,8 @@
 	margin-bottom: 5px;
 	line-height: 2.5em !important;
 	padding-left: 30px !important;
-	background-position: 4px 50%;
-	background-repeat: no-repeat;
+	background-position: 4px 50% !important;
+	background-repeat: no-repeat !important;
 	height: auto !important;
 }
 
@@ -102,11 +102,11 @@
 }
 
 .Dashboard .Activity h2 {
-	background-image: url("../images/22/refresh.png");
+	background-image: url("../images/22/refresh.png") !important;
 }
 
 .Dashboard .Comments h2 {
-	background-image: url("../images/22/chat.png");
+	background-image: url("../images/22/chat.png") !important;
 }
 
 .Dashboard .SiteInfo h2 {
