@@ -33,8 +33,14 @@ class DashboardAdmin extends LeftAndMain {
 	public function init() {
 		parent::init();
 		
+		$vars = array(
+			'Base' => Director::baseURL()
+		);
+		
 		Requirements::css('dashboard/css/Dashboard.css');
-		Requirements::customScript(file_get_contents(Director::baseFolder() . '/dashboard/javascript/Dashboard.js'));
+		
+		Requirements::javascript('dashboard/javascript/greybox.js');
+		Requirements::javascriptTemplate('dashboard/javascript/Dashboard.js',$vars);
 	}
 	
 	/**
@@ -61,11 +67,16 @@ class DashboardAdmin extends LeftAndMain {
 			'Item' => $filesStr
 		)));
 		
-		$members	= DataObject::get('Member');
-		$members	= $members ? $members->Count() : 0;
-		$membersStr	= ($members == 1) ? 'member' : 'members';
+		// Count query is faster then fetching all members and counting the rows
+		// Also check if they have atleast a single group assigned
+		$members = new SQLQuery(
+			'COUNT(DISTINCT Member.ID)',
+			'Member INNER JOIN Group_Members ON Group_Members.MemberID = Member.ID'
+		);
+		$memberCount = $members->execute()->value();
+		$membersStr   = ($memberCount == 1) ? 'member' : 'members';
 		$output->push(new ArrayData(array(
-			'Number' => $members,
+			'Number' => $memberCount,
 			'Item' => $membersStr
 		)));
 		

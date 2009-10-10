@@ -33,7 +33,7 @@
 				<% if RecentFiles %>
 					<ul><% control RecentFiles %>
 						<li>
-							<a class="edit" title="edit" href="admin/assets/EditForm/field/Files/item/$ID/edit" target="_blank"><span>Edit</span></a>
+							<a class="edit editFile" title="Edit $Title" href="admin/assets/EditForm/field/Files/item/$ID/edit" rel="gb_page_center[250, 400]"><span>Edit</span></a>
 							<a href="$Link">$Title</a> <span class="addition">$LastEdited.Ago</span>
 						</li>
 					<% end_control %></ul>
