@@ -6,11 +6,17 @@
 	<h1 id="DashboardTitle"><% _t('DASHBOARD','Dashboard') %></h1>
 
 	<div class="DashboardItem Snippets">
-		<h2><% _t('RECENTACTIVITY', 'Recent Activity') %></h2>		
 		<% control get_plugins(snippet) %>
 			<div class="Snippet <% if EvenOdd = odd %>snLeft<% end_if %>">
+				<% control Plugin %>
+					<h2 {$IconCSS}>
+						<% if Link %><a href="$Link" title="View comments" class="floatright">$LinkText</a><% end_if %>
+						$Title
+					</h2>
+				<% end_control %>
 				$Plugin
 			</div>
+			<% if EvenOdd = even %><div class="clear"></div><% end_if %>
 		<% end_control %>
 
 	</div>
