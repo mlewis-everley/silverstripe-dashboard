@@ -1,6 +1,6 @@
 <div class="Dashboard tab">
 	<% if get_plugins(alerts) %><div class="Alerts">
-		<% control get_plugins(alerts) %><div class="Alert">$Plugin</div><% end_control %>
+		<% control get_plugins(alerts) %>$Plugin<% end_control %>
 	</div><% end_if %>
 
 	<h1 id="DashboardTitle"><% _t('DASHBOARD','Dashboard') %></h1>
@@ -13,6 +13,7 @@
 						<% if Link %><a href="$Link" title="View comments" class="floatright">$LinkText</a><% end_if %>
 						$Title
 					</h2>
+					<p>$Caption</p>
 				<% end_control %>
 				$Plugin
 			</div>
