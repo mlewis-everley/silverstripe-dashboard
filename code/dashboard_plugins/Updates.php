@@ -1,24 +1,22 @@
 <?php
 
-class Updates extends DashboardPlugin
-{
-  static $position = "alerts";
-  static $sort = 0;
+class Updates extends DashboardPlugin {
+	static $position = "alerts";
+	static $sort = 0;
 
-  /**
-	 * @var $ss_link = The link to download the latest Silverstripe
-   */
-	static $ss_link = 'http://www.silverstripe.org/stable-download/';
-  
 	/**
-	 * The GetUpdates method screenscrapes the html interface of the silverstripe SVN repo and retrieves the latest
+	 * @var $ss_link = The link to download the latest Silverstripe
+	 */
+	static $ss_link = 'http://www.silverstripe.org/stable-download/';
+	/**
+	 * This GenericAlert method screenscrapes the html interface of the silverstripe SVN repo and retrieves the latest
 	 * version number, then compares that to the current version number. If the SVN version is greater, it flags an
 	 * update message. 
 	 * 
 	 * @return A message with info about updating.
 	 */
 	
-	public function GetUpdates() {
+	public function GenericAlert() {
 		// Initial variables about SVN location and Current version
 		$verList = $aItems = array();
 		$curVersion = LeftAndMain::CMSVersion();
@@ -47,7 +45,5 @@ class Updates extends DashboardPlugin
 			return 'Silverstripe ' . str_replace('/','',$verList[count($verList) - 1]) . ' is available. The latest version can be found <a href="' . self::$ss_link . '" title="Silverstripe download page">here</a>, or update your SVN.';
 		else
 			return false;
-
    }
-
 }

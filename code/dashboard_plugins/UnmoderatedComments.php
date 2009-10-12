@@ -1,21 +1,17 @@
 <?php
 
-class UnmoderatedComments extends DashboardPlugin
-{
-  static $position = "full_width";
-  static $sort = 2;
-  static $title = "Unmoderated comments";
-  static $link = "admin/comments/";
-  static $icon = "dashboard/images/22/chat.png";
-  
+class UnmoderatedComments extends DashboardPlugin {
+	static $position = "full_width";
+	static $sort = 2;
+	static $title = "Unmoderated comments";
+	static $link = "admin/comments/";
+	static $limit_count = 10;
+	static $icon = "dashboard/images/22/chat.png";
+	static $null_message = 'Your site currently has no unmoderated comments';
 
-  /**
-	 * @var $limit_ucomments = The number of unmodderated comments that will appear
-   */
-	static $limit_ucomments = 10;
   
- 	public function CommentUMod() {
-		$pages = DataObject::get("PageComment", "NeedsModeration = '1'", "`Created` DESC", NULL, "0,".self::$limit_ucomments);
+	public function GenericFullWidth() {
+		$pages = DataObject::get("PageComment", "NeedsModeration = '1'", "`Created` DESC", NULL, "0,".self::$limit_count);
 		return $pages;
 	}
 }
