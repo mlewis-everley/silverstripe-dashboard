@@ -6,7 +6,7 @@ jQuery(document).ready(function(){
 	//If the User resizes the window, adjust the #container height
 	jQuery(window).bind("resize", resizeWindow);
 	
-	jQuery("a.editFile").click(function(){
+	jQuery("a.popup").click(function(){
 		var t = this.title || this.innerHTML || this.href;
 		GB_show(t,this.href,390,560);
 		return false;
