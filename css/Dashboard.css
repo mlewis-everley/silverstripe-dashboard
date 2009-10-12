@@ -21,6 +21,7 @@
 	line-height: 2.5em !important;
 	background-position: 4px 50% !important;
 	background-repeat: no-repeat !important;
+	padding-left: 5px;
 	height: auto !important;
 }
 
@@ -79,6 +80,11 @@
 	font-size: 8pt;
 }
 
+.Dashboard .clear {
+	clear: both;
+	height: 1px;
+}
+
 
 /* Styles for individual dashboard items */
 .Dashboard .DashboardItem {
@@ -109,21 +115,16 @@
 }
 
 /* Styling for snippets that appear in the middle of the right bar */
-.Dashboard .Snippets h2 {
-	background-image: url("../images/22/refresh.png") !important;
-	padding-left: 30px;
-}
-
 .Dashboard .Snippets .Snippet {
-	float:left;
-	width:47.4%;
-	padding: 1%;
+	float: right;
+	width: 48.5%;
+	padding: 0.5%;
 	min-height: 140px;
-	border:1px solid #f2f2f2;
+	border: 1px solid #ccc;
 }
 
 .Dashboard .Snippets .snLeft {
-	margin-right: 0.5%;
+	float: left;
 }
 
 /* Styling for full width items */
