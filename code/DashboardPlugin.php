@@ -49,6 +49,31 @@ abstract class DashboardPlugin extends ViewableData {
 	static $link_text = "View All";
   
 	/**
+	 * @var $limit_count = Limiter to set how many items should be displayed
+	 */  
+	static $limit_count;
+  
+	/**
+	 * @var $caption = Short caption to appear at the top of your plugin
+	 */  
+	static $caption;
+  
+	/**
+	 * @var $null_message = Short message to return if no data is returned
+	 */  
+	static $null_message;
+  
+	/**
+	 * @var $edit_link = URL for edit button, if it exists
+	 */  
+	static $edit_link;
+  
+	/**
+	 * @var $edit_popup = Boolean value of whether an edit link should generate a popup
+	 */  
+	static $edit_popup = FALSE;
+
+	/**
 	 * Sets a plugin class as disabled, so it will not appear on the dashboard.
 	 *
 	 * @return void
@@ -126,12 +151,63 @@ abstract class DashboardPlugin extends ViewableData {
 	}
 
 	/**
+	 * Getter for the $caption property. Allows you to add a quick caption to the top of your dash item
+	 *
+	 * @return string
+	 */      
+	public function getCaption() {
+		return $this->stat('caption');
+	}
+
+	/**
+	 * Getter for the $caption property. Allows you to add a quick caption to the top of your dash item
+	 *
+	 * @return string
+	 */      
+	public function getNullMessage() {
+		return $this->stat('null_message');
+	}
+
+	/**
+	 * Getter for the $edit_link property. Allows you to set the base url for an edit link 
+	 *
+	 * @return string
+	 */      
+	public function getEditLink() {
+		return $this->stat('edit_link');
+	}
+
+	/**
+	 * Getter for the $edit_popup. Sets whether the edit link will be in a popup
+	 *
+	 * @return string
+	 */      
+	public function getEditPopup() {
+		return $this->stat('edit_popup');
+	}
+
+	/**
 	 * For rendering the plugin. Assumes template name of plugin class name.
 	 *
 	 * @return string
 	 */
 	public function forTemplate() {
-		return $this->renderWith(array(get_class($this)));
+		switch($this->stat('position')) {
+			case 'left':
+				$genericTemplate = 'Generic_Left';
+				break;
+			case 'alerts':
+				$genericTemplate = 'Generic_Alert';
+				break;
+			case 'snippet':
+				$genericTemplate = 'Generic_Snippet_List';
+				break;
+			case 'full_width':
+				$genericTemplate = 'Generic_Full_Width';
+				break;
+		}
+
+		return $this->renderWith(array($genericTemplate,get_class($this)));
 	}
 
 }
