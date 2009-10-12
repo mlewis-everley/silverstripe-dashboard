@@ -1,7 +1,3 @@
-<h3>
-	<a href="admin/cms/" title="View all pages" class="floatright">View All</a>
-	Recently Edited
-</h3>
 <p>Your site's most recently edited pages.</p>
 <% if RecentPages %>
 	<ul><% control RecentPages %>

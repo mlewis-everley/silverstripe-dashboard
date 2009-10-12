@@ -1,7 +1,3 @@
-<h3>
-	<a href="admin/assets/" title="View all files" class="floatright">View All</a>
-	Recent Files
-</h3>
 <p>Your site's most recently uploaded/edited files</p>
 <% if RecentFiles %>
 	<ul><% control RecentFiles %>
