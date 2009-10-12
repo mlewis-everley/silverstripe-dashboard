@@ -1,44 +1,10 @@
+/* Generic dashboard styles */
 .Dashboard {
 	border:1px solid #aaa !important;
 	background: #fff;
 	margin: 10px;
 	padding: 10px;
 	overflow: auto;
-}
-
-.Dashboard b {
-	font-size:12px;
-}
-
-.Dashboard .floatright {
-	float:right;
-	margin-right:3px;
-}
-
-.Dashboard li.dotted {
-	border-bottom: 1px dotted #ccc;
-}
-
-.Dashboard .addition {
-	color: #aaa;
-	font-size: 8pt;
-}
-
-.Dashboard a.edit {
-	width: 16px;
-	height: 16px;
-	float: right;
-	background: url(../images/16/edit.png) no-repeat 50% 50%;
-}
-
-.Dashboard a.edit span {
-	display: none;
-}
-
-.Dashboard h2 a,
-.Dashboard h3 a {
-	font-size: 8pt;
-	padding: 0 5px; 
 }
 
 .Dashboard h1 {
@@ -53,7 +19,6 @@
 	font-size: 130% !important;
 	margin-bottom: 5px;
 	line-height: 2.5em !important;
-	padding-left: 30px !important;
 	background-position: 4px 50% !important;
 	background-repeat: no-repeat !important;
 	height: auto !important;
@@ -79,58 +44,77 @@
 	background-color: #f2f2f2;
 }
 
-.Dashboard .SiteInfo p {
-	padding-left: 1%;
+.Dashboard b {
+	font-size:12px;
 }
 
-.Dashboard .Updates {
-	padding: 10px;
-	background: #f2f2f2;
-	border: 1px solid #ccc;
-	font-size: 130%;
-} 
-
-.Dashboard .Items {
-	clear: both;
+.Dashboard h2 a,
+.Dashboard h3 a {
+	font-size: 8pt;
+	padding: 0 5px; 
 }
 
-.Dashboard .dashboardItem {
+.Dashboard a.edit {
+	width: 16px;
+	height: 16px;
+	float: right;
+	background: url(../images/16/edit.png) no-repeat 50% 50%;
+}
+
+.Dashboard a.edit span {
+	display: none;
+}
+
+.Dashboard .floatright {
+	float:right;
+	margin-right:3px;
+}
+
+.Dashboard li.dotted {
+	border-bottom: 1px dotted #ccc;
+}
+
+.Dashboard .addition {
+	color: #aaa;
+	font-size: 8pt;
+}
+
+
+/* Styles for individual dashboard items */
+.Dashboard .DashboardItem {
 	padding:3px;
 	border:1px solid #ccc;
 	margin-bottom:3px;
 	overflow:auto;
 }
 
-.Dashboard .Activity h2 {
+#left .Dashboard .DashboardItem p {
+	padding-left: 1%;
+}
+
+
+/* Styling for alerts that appear in the top right */
+.Dashboard .Alerts {
+	padding: 0 10px;
+	background: #f2f2f2;
+	border: 1px solid #ccc;
+}
+.Dashboard .Alerts .Alert {
+	padding: 10px 0;
+	font-size: 10pt;
+}
+
+.Dashboard .Alerts .Alert * {
+	font-size: 10pt;	
+}
+
+/* Styling for snippets that appear in the middle of the right bar */
+.Dashboard .Snippets h2 {
 	background-image: url("../images/22/refresh.png") !important;
+	padding-left: 30px;
 }
 
-.Dashboard .Comments h2 {
-	background-image: url("../images/22/chat.png") !important;
-}
-
-.Dashboard .SiteInfo h2 {
-	background-image: url("../images/22/blackbox.png") !important;
-}
-
-.Dashboard .SSNews h2 {
-	background-image: url("../images/22/feed.png") !important;
-}
-
-.Dashboard .Comments ul {
-	padding-top: 0.5%;
-}
-
-.Dashboard .Comments li {
-	padding-bottom: 1%;
-	margin-bottom: 1%;
-	margin-left: 1%;
-	line-height: 1.75em;
-	width: 46.5%;
-	float: left;
-}
-
-.Dashboard .snippet {
+.Dashboard .Snippets .Snippet {
 	float:left;
 	width:47.4%;
 	padding: 1%;
@@ -138,13 +122,23 @@
 	border:1px solid #f2f2f2;
 }
 
-.Dashboard .snLeft {
+.Dashboard .Snippets .snLeft {
 	margin-right: 0.5%;
 }
 
-.Dashboard img.loader {
-	display: block;
-	margin:auto;
+/* Styling for full width items */
+
+.Dashboard .FullWidth ul {
+	padding-top: 0.5%;
+}
+
+.Dashboard .FullWidth li {
+	padding-bottom: 1%;
+	margin-bottom: 1%;
+	margin-left: 1%;
+	line-height: 1.75em;
+	width: 46.5%;
+	float: left;
 }
 
 .Dashboard .SSNews li {
