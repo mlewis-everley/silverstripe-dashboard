@@ -104,7 +104,7 @@ class DashboardAdmin extends LeftAndMain {
 					'Class' => $plugin
 				)));
 			}
-			
+						
 			return $data;
 	   }
 	   
