@@ -11,6 +11,9 @@ jQuery(document).ready(function(){
 		GB_show(t,this.href,390,560);
 		return false;
 	});
+	
+	if(!(jQuery("div.Alerts div.Alert").html()))
+		jQuery("div.Alerts").hide();
 });
 
 function resizeWindow( e ) {
