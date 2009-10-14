@@ -1,4 +1,12 @@
 <?php
+/**
+ * Snippets have the following generic variables, that can be used in generic templates:
+ * 
+ * $Title
+ * $URL
+ * $Date
+ * $ID
+ */
 
 class RecentFiles extends DashboardPlugin {
 	static $position = "snippet";
@@ -12,8 +20,23 @@ class RecentFiles extends DashboardPlugin {
 	static $edit_popup = TRUE;
 
 	public function GenericSnippetList() {
-		$result = DataObject::get("File", "ClassName <> 'Folder'", "`LastEdited` DESC", NULL, "0,".self::$limit_count);
+		$output = new DataObjectSet();
 		
-		return $result;
+		$items = DataObject::get("File", "ClassName <> 'Folder'", "`LastEdited` DESC", NULL, "0,".self::$limit_count);
+		
+		if($items) {
+			foreach($items as $item) {
+				$date = new Date('Date');
+				$date->setValue($item->LastEdited);
+				
+				$output->push(new ArrayData(array(
+					'URL'		=> Director::baseURL().$item->Filename,
+					'Title'		=> $item->Title,
+					'Date'		=> $date,
+					'ID'		=> $item->ID
+				)));
+			}
+		}
+		return $output;
 	}
 }
