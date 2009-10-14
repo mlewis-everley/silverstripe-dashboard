@@ -1,8 +1,16 @@
 <% if GenericSnippetList %>
 	<ul><% control GenericSnippetList %>
 		<li>
-			<a class="edit <% if Top.EditPopup %>popup<% end_if %>" title="Edit $Title" href="$Top.EditLink/$ID/edit"><span>Edit</span></a>
-			<a href="$Link">$Title</a> <span class="addition">$LastEdited.Ago</span>
+			<% if Top.EditLink %>
+				<a class="edit <% if Top.EditPopup %>popup<% end_if %>" title="Edit <% if Title %>$Title<% end_if %>" href="$Top.EditLink/<% if ID %>$ID/edit<% end_if %>">
+					<span>Edit</span>
+				</a>
+			<% end_if %>
+			<% if Title %>
+				<% if URL %><a href="$URL">$Title</a>
+				<% else %>$Title<% end_if %>
+			<% end_if %>
+			<% if Date %><span class="addition">$Date.Ago</span><% end_if %>
 		</li>
 	<% end_control %></ul>
 <% else %>
