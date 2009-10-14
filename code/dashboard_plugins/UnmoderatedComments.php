@@ -22,7 +22,7 @@ class UnmoderatedComments extends DashboardPlugin {
 	public function GenericFullWidth() {
 		$output = new DataObjectSet();
 		
-		$items = DataObject::get("PageComment", "NeedsModeration = '0'", "`Created` DESC", NULL, "0,".self::$limit_count);
+		$items = DataObject::get("PageComment", "NeedsModeration = '1'", "`Created` DESC", NULL, "0,".self::$limit_count);
 		
 		if($items) {
 			foreach($items as $item) {
