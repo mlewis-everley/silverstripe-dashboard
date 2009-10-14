@@ -2,9 +2,11 @@
   	<ul>
 	   <% control GenericFullWidth %>
 		  <li class="dotted <% if Even %>snLeft<% end_if %>">
-  			By <strong>$Name</strong> at <% if CommenterURL %><a href="$CommenterURL">$CommenterURL</a><% end_if %> for page/post: <% control Parent %><a href="$Link">$Title</a><% end_control %><br/>
-  			<em>"$Comment"</em><br/>
-  			<span class="addition">Written $Created.Ago</span>
+  			<% if Author %>By <strong>$Author</strong>;<% end_if %>
+			<% if URL %>Website: <a href="$URL">$URL</a>;<% end_if %><br/>
+			<% if Title %><strong>$Title</strong>:<% end_if %>
+  			<% if Content %><em>"$Content"</em><br/><% end_if %>
+  			<% if Date %><span class="addition">Date $Date.Ago</span><% end_if %>
 		  </li>
     </ul>
 	<% end_control %>
