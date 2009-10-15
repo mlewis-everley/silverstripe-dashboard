@@ -55,14 +55,24 @@
 	padding: 0 5px; 
 }
 
-.Dashboard a.edit {
+.Dashboard a.edit,
+.Dashboard a.delete {
 	width: 16px;
 	height: 16px;
+	margin-left: 10px;
 	float: right;
-	background: url(../images/16/edit.png) no-repeat 50% 50%;
 }
 
-.Dashboard a.edit span {
+.Dashboard a.delete {
+	background: url(../images/16/delete.png) no-repeat 50% 50%;	
+}
+
+.Dashboard a.edit {
+	background: url(../images/16/edit.png) no-repeat 50% 50%;	
+}
+
+.Dashboard a.edit span,
+.Dashboard a.delete span {
 	display: none;
 }
 
@@ -82,7 +92,9 @@
 
 .Dashboard .clear {
 	clear: both;
-	height: 1px;
+	height: 1px !important;
+	width: 100% !important;
+	padding: 0 !important;
 }
 
 
