@@ -20,6 +20,8 @@ class DashboardAdmin extends LeftAndMain {
 	 * @var $default_position = Default position that a plugin will have
 	 */
 	static $default_position = 0;
+	
+	static $visit_site_link;
 
 	/**
 	 * Initialisation method called before accessing any functionality that RandomLinksAdmin has to offer
