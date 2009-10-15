@@ -20,8 +20,6 @@ class DashboardAdmin extends LeftAndMain {
 	 * @var $default_position = Default position that a plugin will have
 	 */
 	static $default_position = 0;
-	
-	static $visit_site_link;
 
 	/**
 	 * Initialisation method called before accessing any functionality that RandomLinksAdmin has to offer
@@ -121,6 +119,14 @@ class DashboardAdmin extends LeftAndMain {
 	 */
 	public function get_plugins($pos = 'left') {
 		return $this->Plugins($pos);
+	}
+	
+	/**
+	 * Returns the base site URL, that can be accessed from the template
+	 * @return String - Site URL 
+	 */
+	public function visit_site_link() {
+		return Director::baseURL();
 	}
 }
 
