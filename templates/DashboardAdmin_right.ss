@@ -3,7 +3,12 @@
 		<% control get_plugins(alerts) %>$Plugin<% end_control %>
 	</div><% end_if %>
 
-	<h1 id="DashboardTitle"><% _t('DASHBOARD','Dashboard') %></h1>
+	<h1 id="DashboardTitle">
+		<% _t('DASHBOARD','Dashboard') %>
+		<% if visit_site_link %>
+			<a class="visitSiteLink" href="$visit_site_link" title="<% _t('VISIT SITE','Visit Site') %>">&raquo;<span><% _t('VISIT SITE','Visit Site') %></span></a>
+		<% end_if %>
+	</h1>
 
 	<div class="DashboardItem Snippets">
 		<% control get_plugins(snippet) %>

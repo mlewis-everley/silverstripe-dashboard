@@ -99,6 +99,20 @@
 
 
 /* Styles for individual dashboard items */
+.Dashboard a.visitSiteLink {
+	text-decoration: none;
+	padding: 0 5px;
+}
+
+.Dashboard a.visitSiteLink span {
+	display: none;
+	font-size: 75%;
+}
+
+.Dashboard a.visitSiteLink:hover span {
+	display: inline;
+}
+
 .Dashboard .DashboardItem {
 	padding:3px;
 	border:1px solid #ccc;
