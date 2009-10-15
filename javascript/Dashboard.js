@@ -12,6 +12,23 @@ jQuery(document).ready(function(){
 		return false;
 	});
 	
+	jQuery("a.delete").click(function(){
+		toDelete = confirm('Are you sure you wish to delete this item?');
+		
+		if(toDelete == true) {
+			jQuery(this).load(
+				jQuery(this).attr('href'),
+				null,
+				function(){
+					window.location.reload(true);
+				}
+			);
+			return false;
+		} else
+			return false;
+		
+	});
+	
 	if(!(jQuery("div.Alerts div.Alert").html()))
 		jQuery("div.Alerts").hide();
 });
