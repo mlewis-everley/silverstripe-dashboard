@@ -93,6 +93,7 @@
 .Dashboard .clear {
 	clear: both;
 	height: 1px !important;
+	min-height: 0 !important;
 	width: 100% !important;
 	padding: 0 !important;
 }
@@ -162,10 +163,10 @@
 .Dashboard .FullWidth li {
 	padding-bottom: 1%;
 	margin-bottom: 1%;
-	margin-left: 1%;
 	line-height: 1.75em;
-	width: 46.5%;
+	width: 48%;
 	float: left;
+	min-height: 90px;
 }
 
 .Dashboard .SSNews li {
