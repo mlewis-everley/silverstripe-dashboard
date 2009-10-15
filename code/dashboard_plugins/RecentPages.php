@@ -6,6 +6,8 @@
  * $URL
  * $Date
  * $ID
+ * $EditLink
+ * $DeleteLink
  */
 
 
@@ -30,10 +32,11 @@ class RecentPages extends DashboardPlugin {
 				$date->setValue($item->LastEdited);
 				
 				$output->push(new ArrayData(array(
-					'URL'		=> Director::baseURL().$item->URLSegment,
-					'Title'		=> $item->Title,
-					'Date'		=> $date,
-					'ID'		=> $item->ID
+					'URL'			=> Director::baseURL().$item->URLSegment,
+					'Title'			=> $item->Title,
+					'Date'			=> $date,
+					'ID'			=> $item->ID,
+					'EditLink'		=> self::$edit_link.'/'.$item->ID
 				)));
 			}
 		}

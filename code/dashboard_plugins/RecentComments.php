@@ -7,6 +7,8 @@
  * $Date
  * $Title
  * $Content
+ * $EditLink
+ * $DeleteLink
  */
 class RecentComments extends DashboardPlugin {
 	static $position = "full_width";
@@ -16,6 +18,8 @@ class RecentComments extends DashboardPlugin {
 	static $limit_count = 10;
 	static $icon = "dashboard/images/22/chat.png";
 	static $null_message = 'Your site currently has no comments';
+	static $edit_link = 'admin/comments/EditForm/field/Comments/item';
+	static $edit_popup = TRUE;
 
   
 	public function GenericFullWidth() {
@@ -32,7 +36,9 @@ class RecentComments extends DashboardPlugin {
 					'URL'		=> $item->CommenterURL,
 					'Author'	=> $item->Name,
 					'Date'		=> $date,
-					'Content'	=> $item->Comment
+					'Content'	=> $item->Comment,
+					'EditLink'		=> self::$edit_link.'/'.$item->ID.'/edit',
+					'DeleteLink'	=> self::$edit_link.'/'.$item->ID.'/delete'
 				)));
 			}
 		}

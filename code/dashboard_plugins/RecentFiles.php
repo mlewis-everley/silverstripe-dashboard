@@ -6,6 +6,8 @@
  * $URL
  * $Date
  * $ID
+ * $EditLink
+ * 
  */
 
 class RecentFiles extends DashboardPlugin {
@@ -33,7 +35,9 @@ class RecentFiles extends DashboardPlugin {
 					'URL'		=> Director::baseURL().$item->Filename,
 					'Title'		=> $item->Title,
 					'Date'		=> $date,
-					'ID'		=> $item->ID
+					'ID'		=> $item->ID,
+					'EditLink'		=> self::$edit_link.'/'.$item->ID.'/edit',
+					'DeleteLink'	=> self::$edit_link.'/'.$item->ID.'/delete'
 				)));
 			}
 		}
