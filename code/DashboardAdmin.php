@@ -26,7 +26,7 @@ class DashboardAdmin extends LeftAndMain {
 	 */
 	public function init() {
 		parent::init();
-				
+
 		$vars = array(
 			'Base' => Director::baseURL()
 		);
