@@ -32,6 +32,8 @@ class DashboardAdmin extends LeftAndMain {
 		);
 		
 		Requirements::css('dashboard/css/Dashboard.css');
+		Requirements::insertHeadTags('<!--[if IE 6]><link type="text/css" href="dashboard/css/ie6.css" rel="stylesheet" media="screen" /><![endif]-->');
+
 		
 		Requirements::javascript('dashboard/javascript/greybox.js');
 		Requirements::javascriptTemplate('dashboard/javascript/Dashboard.js',$vars);
