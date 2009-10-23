@@ -32,12 +32,13 @@ class RecentFiles extends DashboardPlugin {
 				$date->setValue($item->LastEdited);
 				
 				$output->push(new ArrayData(array(
-					'URL'		=> Director::baseURL().$item->Filename,
-					'Title'		=> $item->Title,
-					'Date'		=> $date,
-					'ID'		=> $item->ID,
+					'URL'			=> Director::baseURL().$item->Filename,
+					'Title'			=> $item->Title,
+					'Date'			=> $date,
+					'ID'			=> $item->ID,
 					'EditLink'		=> self::$edit_link.'/'.$item->ID.'/edit',
-					'DeleteLink'	=> self::$edit_link.'/'.$item->ID.'/delete'
+					'DeleteLink'	=> self::$edit_link.'/'.$item->ID.'/delete',
+					'EditPopup'		=> self::$edit_popup
 				)));
 			}
 		}
