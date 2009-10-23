@@ -18,9 +18,11 @@
 						<% if Link %><a href="$Link" title="View comments" class="floatright">$LinkText</a><% end_if %>
 						$Title
 					</h2>
-					<p>$Caption</p>
 				<% end_control %>
-				$Plugin
+				<div class="Plugin">
+					<p>$Plugin.Caption</p>
+					$Plugin
+				</div>
 			</div>
 			<% if EvenOdd = even %><div class="clear"></div><% end_if %>
 		<% end_control %>
@@ -35,7 +37,7 @@
 					$Title
 				</h2>
 			<% end_control %>
-			$Plugin
+			<div class="Plugin">$Plugin</div>
 		</div>
 	<% end_control %>
 

@@ -7,7 +7,7 @@
 					$Title
 				</h2>
 			<% end_control %>
-			$Plugin
+			<div class="Plugin">$Plugin</div>
 		</div>
 	<% end_control %>
 </div>
