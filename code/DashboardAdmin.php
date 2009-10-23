@@ -16,7 +16,7 @@ class DashboardAdmin extends LeftAndMain {
 	 */
 	static $plugins = array();
 	
-	/*
+	/**
 	 * @var $default_position = Default position that a plugin will have
 	 */
 	static $default_position = 0;
