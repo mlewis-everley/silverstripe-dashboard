@@ -35,13 +35,13 @@ jQuery(document).ready(function(){
 		
 	// Add show hide buttons to each header
 	jQuery(".Dashboard h2").each(function() {
-		jQuery(this).html(jQuery(this).html() + '<span> + </span>');
-		jQuery(this).children('span').click(function() {
+		jQuery(this).html('<span class="floatright showHide"> +</span>' + jQuery(this).html());
+		jQuery(this).children('span.showHide').click(function() {
 			jQuery(this).parent().next().slideToggle();
 			if(jQuery(this).text() == '-')
-				jQuery(this).text('+');
+				jQuery(this).html('+');
 			else
-				jQuery(this).text('-');
+				jQuery(this).html('-');
 		});
 	});
 	

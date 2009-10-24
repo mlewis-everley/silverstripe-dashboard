@@ -16,7 +16,7 @@
 .Dashboard h2 {
 	color: #333 !important;
 	background: #f2f2f2;
-	font-size: 130% !important;
+	font-size: 125% !important;
 	margin-bottom: 5px;
 	line-height: 2.5em !important;
 	background-position: 4px 50% !important;
@@ -51,7 +51,6 @@
 
 .Dashboard h2 a,
 .Dashboard h3 a {
-	font-size: 8pt;
 	padding: 0 5px; 
 }
 
@@ -84,7 +83,7 @@
 
 .Dashboard .floatright {
 	float:right;
-	margin-right:3px;
+	margin-right:5px;
 }
 
 .Dashboard li.dotted {
@@ -108,17 +107,17 @@
 
 
 /* Styles for individual dashboard items */
-.Dashboard a.visitSiteLink {
+.Dashboard a.revealLink {
 	text-decoration: none;
 	padding: 0 5px;
 }
 
-.Dashboard a.visitSiteLink span {
+.Dashboard a.revealLink span {
 	display: none;
-	font-size: 75%;
+	font-size: 80%;
 }
 
-.Dashboard a.visitSiteLink:hover span {
+.Dashboard a.revealLink:hover span {
 	display: inline;
 }
 
