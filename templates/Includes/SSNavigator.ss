@@ -9,8 +9,8 @@
 		</div>
 		
 		<div id="switchView" class="bottomTabs">
-			<div class="blank">View Page in:</div>
-			<a href="$cmsLink/$ID" target="cms">CMS</a>
+			<a href="$adminLink" target="cms">CMS</a>
+			<a href="$cmsLink/$ID" target="cms">Edit Page</a>
 			<% if DisplayMode == Stage %>
 				<a class="current">Draft Site</a>
 				<div class="blank" style="width:1em;"> </div>

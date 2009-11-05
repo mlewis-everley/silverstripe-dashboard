@@ -1,44 +1,10 @@
+/* Generic dashboard styles */
 .Dashboard {
 	border:1px solid #aaa !important;
 	background: #fff;
 	margin: 10px;
 	padding: 10px;
 	overflow: auto;
-}
-
-.Dashboard b {
-	font-size:12px;
-}
-
-.Dashboard .floatright {
-	float:right;
-	margin-right:3px;
-}
-
-.Dashboard li.dotted {
-	border-bottom: 1px dotted #ccc;
-}
-
-.Dashboard .addition {
-	color: #aaa;
-	font-size: 8pt;
-}
-
-.Dashboard a.edit {
-	width: 16px;
-	height: 16px;
-	float: right;
-	background: url(../images/16/edit.png) no-repeat 50% 50%;
-}
-
-.Dashboard a.edit span {
-	display: none;
-}
-
-.Dashboard h2 a,
-.Dashboard h3 a {
-	font-size: 8pt;
-	padding: 0 5px; 
 }
 
 .Dashboard h1 {
@@ -50,12 +16,12 @@
 .Dashboard h2 {
 	color: #333 !important;
 	background: #f2f2f2;
-	font-size: 130% !important;
+	font-size: 125% !important;
 	margin-bottom: 5px;
 	line-height: 2.5em !important;
-	padding-left: 30px !important;
 	background-position: 4px 50% !important;
 	background-repeat: no-repeat !important;
+	padding-left: 5px;
 	height: auto !important;
 }
 
@@ -79,72 +45,139 @@
 	background-color: #f2f2f2;
 }
 
-.Dashboard .SiteInfo p {
-	padding-left: 1%;
+.Dashboard b {
+	font-size:12px;
 }
 
-.Dashboard .Updates {
-	padding: 10px;
-	background: #f2f2f2;
-	border: 1px solid #ccc;
-	font-size: 130%;
-} 
-
-.Dashboard .Items {
-	clear: both;
+.Dashboard h2 a,
+.Dashboard h3 a {
+	padding: 0 5px; 
 }
 
-.Dashboard .dashboardItem {
+.Dashboard h2 span {
+	cursor: pointer;
+	color: #0074C6;
+	font-size: 110%;
+}
+
+.Dashboard a.edit,
+.Dashboard a.delete {
+	width: 16px;
+	height: 16px;
+	margin-left: 10px;
+	float: right;
+}
+
+.Dashboard a.delete {
+	background: url(../images/16/delete.png) no-repeat 50% 50%;	
+}
+
+.Dashboard a.edit {
+	background: url(../images/16/edit.png) no-repeat 50% 50%;	
+}
+
+.Dashboard a.edit span,
+.Dashboard a.delete span {
+	display: none;
+}
+
+.Dashboard .floatright {
+	float:right;
+	margin-right:5px;
+}
+
+.Dashboard li.dotted {
+	border-bottom: 1px dotted #ccc;
+}
+
+.Dashboard .addition {
+	color: #aaa;
+	font-size: 8pt;
+}
+
+.Dashboard .clear {
+	clear: both !important;
+	float: left !important;
+	height: 1px !important;
+	min-height: 1px !important;
+	width: 100% !important;
+	padding: 0 !important;
+	overflow: hidden;
+}
+
+
+/* Styles for individual dashboard items */
+.Dashboard a.revealLink {
+	text-decoration: none;
+	padding: 0 5px;
+}
+
+.Dashboard a.revealLink span {
+	display: none;
+	font-size: 80%;
+}
+
+.Dashboard a.revealLink:hover span {
+	display: inline;
+}
+
+.Dashboard .DashboardItem {
 	padding:3px;
 	border:1px solid #ccc;
 	margin-bottom:3px;
 	overflow:auto;
 }
 
-.Dashboard .Activity h2 {
-	background-image: url("../images/22/refresh.png") !important;
+#left .Dashboard .DashboardItem p {
+	padding-left: 1%;
 }
 
-.Dashboard .Comments h2 {
-	background-image: url("../images/22/chat.png") !important;
+
+/* Styling for alerts that appear in the top right */
+.Dashboard .Alerts {
+	padding: 0 10px;
+	background: #f2f2f2;
+	border: 1px solid #ccc;
+}
+.Dashboard .Alerts .Alert {
+	padding: 10px 0;
+	font-size: 10pt;
 }
 
-.Dashboard .SiteInfo h2 {
-	background-image: url("../images/22/blackbox.png") !important;
+.Dashboard .Alerts .Alert * {
+	font-size: 10pt;	
 }
 
-.Dashboard .SSNews h2 {
-	background-image: url("../images/22/feed.png") !important;
+/* Styling for snippets that appear in the middle of the right bar */
+.Dashboard .Snippets .Snippet {
+	float: right;
+	width: 48.5%;
+	padding: 0.5%;
+	border: 1px solid #ccc;
 }
 
-.Dashboard .Comments ul {
-	padding-top: 0.5%;
+.Dashboard .Snippets .Snippet .Plugin {
+	padding-bottom: 0.5em;
 }
 
-.Dashboard .Comments li {
-	padding-bottom: 1%;
-	margin-bottom: 1%;
-	margin-left: 1%;
-	line-height: 1.75em;
-	width: 46.5%;
+
+.Dashboard .Snippets .snLeft {
 	float: left;
 }
 
-.Dashboard .snippet {
-	float:left;
-	width:47.4%;
-	padding: 1%;
-	min-height: 140px;
-	border:1px solid #f2f2f2;
+/* Styling for full width items */
+
+.Dashboard .FullWidth ul {
+	padding-top: 0.5%;
 }
 
-.Dashboard .snLeft {
-	margin-right: 0.5%;
-}
-
-.Dashboard img.loader {
-	display: block;
-	margin:auto;
+.Dashboard .FullWidth li {
+	padding-bottom: 1%;
+	margin-bottom: 1%;
+	line-height: 1.75em;
+	width: 48%;
+	float: left;
+	min-height: 90px;
 }
 
 .Dashboard .SSNews li {

@@ -1,65 +1,44 @@
 <div class="Dashboard tab">
-	<% if GetUpdates %>
-		<div class="Updates">$GetUpdates</div>
-	<% end_if %>
-	<h1 id="DashboardTitle"><% _t('DASHBOARD', 'Dashboard') %></h1>
-	
-	<div class="Items">
-		<div class="dashboardItem Activity">
-			<h2><% _t('RECENTACTIVITY', 'Recent Activity') %></h2>
-			<div class="snippet snLeft">
-				<h3>
-					<a href="admin/cms/" title="View all pages" class="floatright">View All</a>
-					Recently Edited
-				</h3>
-				<p>Your site's most recently edited pages.</p>
-				<% if RecentPages %>
-					<ul><% control RecentPages %>
-						<li>
-							<a class="edit" title="edit" href="admin/cms/show/$ID"><span>Edit</span></a>
-							<a href="$Link">$Title</a> <span class="addition">$LastEdited.Ago</span>
-						</li>
-					<% end_control %></ul>
-				<% else %>
-					<p><em>You site currently has no pages</em></p>
-				<% end_if %>
-			</div>
-			<div class="snippet">
-				<h3>
-					<a href="admin/assets/" title="View all files" class="floatright">View All</a>
-					Recent Files
-				</h3>
-				<p>Your site's most recently uploaded/edited files</p>
-				<% if RecentFiles %>
-					<ul><% control RecentFiles %>
-						<li>
-							<a class="edit editFile" title="Edit $Title" href="admin/assets/EditForm/field/Files/item/$ID/edit" rel="gb_page_center[250, 400]"><span>Edit</span></a>
-							<a href="$Link">$Title</a> <span class="addition">$LastEdited.Ago</span>
-						</li>
-					<% end_control %></ul>
-				<% else %>
-					<p><em>Your site currently has no files</em></p>
-				<% end_if %>
-			</div>
-		</div>
-		
-		<div class="dashboardItem Comments">
-			<h2>
-				<a href="admin/comments/" title="View comments" class="floatright">View All</a>
-				<% _t('UMODCOMMENTS', 'Unmoderated comments') %>
-			</h3>
-			<% if CommentMod %>
-				<ul><% control CommentUMod %>
-					<li class="dotted <% if Even %>snLeft<% end_if %>">
-						By <strong>$Name</strong> at <% if CommenterURL %><a href="$CommenterURL">$CommenterURL</a><% end_if %> for page/post: <% control Parent %><a href="$Link">$Title</a><% end_control %><br/>
-						<em>"$Comment"</em><br/>
-						<span class="addition">Written $Created.Ago</span>
-					</li>
+	<% if get_plugins(alerts) %><div class="Alerts">
+		<% control get_plugins(alerts) %>$Plugin<% end_control %>
+	</div><% end_if %>
+
+	<h1 id="DashboardTitle">
+		<% _t('DASHBOARD','Dashboard') %>
+		<% if visit_site_link %>
+			<a class="revealLink" href="$visit_site_link" title="<% _t('VISIT SITE','Visit Site') %>">&raquo;<span><% _t('VISIT SITE','Visit Site') %></span></a>
+		<% end_if %>
+	</h1>
+
+	<div class="DashboardItem Snippets">
+		<% control get_plugins(snippet) %>
+			<div class="Snippet <% if EvenOdd = odd %>snLeft<% end_if %>">
+				<% control Plugin %>
+					<h2 {$IconCSS}>
+						$Title
+						<% if Link %><a href="$Link" title="View all" class="revealLink">&raquo;<span>$LinkText</span></a><% end_if %>
+					</h2>
 				<% end_control %>
-			<% else %>
-				<p><em>Your site currently has no unmoderated comments</em></p>
-			<% end_if %>
-			</ul>
-		</div>
+				<div class="Plugin">
+					<p>$Plugin.Caption</p>
+					$Plugin
+				</div>
+			</div>
+			<% if EvenOdd = even %><div class="clear"></div><% end_if %>
+		<% end_control %>
+
 	</div>
+		
+	<% control get_plugins(full_width) %>
+  		<div class="DashboardItem FullWidth $Class">
+  			<% control Plugin %>
+				<h2 {$IconCSS}>
+					$Title
+					<% if Link %><a href="$Link" title="View all" class="revealLink">&raquo;<span>$LinkText</span></a><% end_if %>
+				</h2>
+			<% end_control %>
+			<div class="Plugin">$Plugin</div>
+		</div>
+	<% end_control %>
+
 </div>

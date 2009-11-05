@@ -7,3 +7,7 @@ Install Instructions:
     SilverStripe root folder
  2) Run dev/build?flush=1
  3) Login to your administration panel - hopefully it works!
+ 
+ ** Silverstripe navigator **
+ The standard silverstripe navigator will most likely not work properly. In order to get it working,
+ change the $Silverstripenavigator variable in your template to $SSNavigator

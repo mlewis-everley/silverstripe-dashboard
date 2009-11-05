@@ -1,0 +1,16 @@
+.Dashboard li {
+	padding: 5px;
+}
+
+.Dashboard .DashboardItem {
+	width: 99%;
+	padding:3px;
+}
+
+.Dashboard .Snippets .Snippet {
+	width: 48%;
+}
+
+.Dashboard .FullWidth li {
+	height: 90px;
+}
