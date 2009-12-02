@@ -17,7 +17,13 @@ class SSNews extends DashboardPlugin {
 	 * @return DataObjectSet 
 	 */
 	function LatestSSNews() {
-		include_once(Director::getAbsFile(SAPPHIRE_DIR . '/thirdparty/simplepie/SimplePie.php'));
+		$sp23 = Director::getAbsFile(SAPPHIRE_DIR . '/thirdparty/simplepie/SimplePie.php');
+		$sp24 = Director::getAbsFile(SAPPHIRE_DIR . '/thirdparty/simplepie/SimplePie.inc');
+		
+		if(file_exists($sp23))
+			include_once $sp23;
+		elseif(file_exists($sp24))
+			include_once $sp24;
 		
 		$output = new DataObjectSet();
 		
