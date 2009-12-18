@@ -18,7 +18,7 @@ class SSNews extends DashboardPlugin {
 	 */
 	function LatestSSNews() {
 		$sp23 = Director::getAbsFile(SAPPHIRE_DIR . '/thirdparty/simplepie/SimplePie.php');
-		$sp24 = Director::getAbsFile(SAPPHIRE_DIR . '/thirdparty/simplepie/SimplePie.inc');
+		$sp24 = Director::getAbsFile(SAPPHIRE_DIR . '/thirdparty/simplepie/simplepie.inc');
 		
 		if(file_exists($sp23))
 			include_once $sp23;
