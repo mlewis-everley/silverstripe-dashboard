@@ -25,14 +25,14 @@ class Updates extends DashboardPlugin {
 	public function GenericAlert() {
 		// Initial variables about SVN location and Current version
 		$verList = $aItems = array();
-		$curVersion = LeftAndMain::CMSVersion();
+		$curVersion = LeftAndMain::versionFromVersionFile(file_get_contents(BASE_PATH . '/cms/silverstripe_version'));
 		//$curVersion = "2.3.1";
 		$curVersion = floor(str_replace(array('.','/'),'',$curVersion));
 
 		// Get HTML from Silverstripe SVN browser, then pull out all A tags
 		$sRequest = HTTP::sendRequest('svn.silverstripe.com', '/open/modules/sapphire/tags/', null);
 		preg_match_all('#<a[^<]*>([^<]*)</a>#i', $sRequest, $aItems, PREG_SET_ORDER);
-		
+
 		// Loop trough all A tags and attempt to convert their value to Int. If success
 		// add the value to $verList array.
 		foreach($aItems as $aItem) {
@@ -45,11 +45,14 @@ class Updates extends DashboardPlugin {
 		
 		// Retrieve the last item in the $verList array and converty to int
 		$latest = floor(str_replace(array('.','/'), '', $verList[count($verList) - 1]));
+
+		if($curVersion < 200)
+			$curVersion = $curVersion * 10;
 		
 		// If latest version if later than current version, return an update message.
 		if($latest > $curVersion && Permission::check(Updates::$view_level))
 			return 'Silverstripe ' . str_replace('/','',$verList[count($verList) - 1]) . ' is available. The latest version can be found <a href="' . self::$ss_link . '" title="Silverstripe download page">here</a>, or update your SVN.';
 		else
 			return false;
-   }
+	}
 }
