@@ -25,7 +25,13 @@ class Updates extends DashboardPlugin {
 	public function GenericAlert() {
 		// Initial variables about SVN location and Current version
 		$verList = $aItems = array();
-		$curVersion = LeftAndMain::versionFromVersionFile(file_get_contents(BASE_PATH . '/cms/silverstripe_version'));
+
+		if(method_exists('LeftAndMain', 'versionFromVersionFile'))
+		    $curVersion = LeftAndMain::versionFromVersionFile(file_get_contents(BASE_PATH . '/cms/silverstripe_version'));
+		else
+		    $curVersion = LeftAndMain::CMSVersion();
+
+		echo $curVersion;
 		//$curVersion = "2.3.1";
 		$curVersion = floor(str_replace(array('.','/'),'',$curVersion));
 
