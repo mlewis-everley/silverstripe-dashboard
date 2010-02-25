@@ -30,8 +30,6 @@ class Updates extends DashboardPlugin {
 		    $curVersion = LeftAndMain::versionFromVersionFile(file_get_contents(BASE_PATH . '/cms/silverstripe_version'));
 		else
 		    $curVersion = LeftAndMain::CMSVersion();
-
-		echo $curVersion;
 		//$curVersion = "2.3.1";
 		$curVersion = floor(str_replace(array('.','/'),'',$curVersion));
 
