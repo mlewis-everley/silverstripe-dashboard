@@ -24,34 +24,39 @@ class SSNews extends DashboardPlugin {
 			include_once $sp23;
 		elseif(file_exists($sp24))
 			include_once $sp24;
-		
-		$output = new DataObjectSet();
-		
-		$feed = new SimplePie(self::$rss_url, TEMP_FOLDER);
-		$feed->init();
-		if($items = $feed->get_items(0, 2)) {
-			foreach($items as $item) {
-				
-				// Cast the Date
-				$date = new Date('Date');
-				$date->setValue($item->get_date());
 
-				// Cast the Title
-				$title = new Text('Title');
-				$title->setValue($item->get_title());
-				
-				// Cast the description and strip
-				$desc = new Text('Description');
-				$desc->setValue(strip_tags($item->get_description()));
+                if(file_exists(self::$rss_url)) {
+                    $output = new DataObjectSet();
 
-				$output->push(new ArrayData(array(
-					'Title'			=> $title,
-					'Date'			=> $date,
-					'Link'			=> $item->get_link(),
-					'Description'	=> $desc
-				)));
-			}
-			return $output;
-		}
+                    $feed = new SimplePie(self::$rss_url, TEMP_FOLDER);
+                    $feed->init();
+
+                    if($items = $feed->get_items(0, 2)) {
+                            foreach($items as $item) {
+
+                                    // Cast the Date
+                                    $date = new Date('Date');
+                                    $date->setValue($item->get_date());
+
+                                    // Cast the Title
+                                    $title = new Text('Title');
+                                    $title->setValue($item->get_title());
+
+                                    // Cast the description and strip
+                                    $desc = new Text('Description');
+                                    $desc->setValue(strip_tags($item->get_description()));
+
+                                    $output->push(new ArrayData(array(
+                                            'Title'			=> $title,
+                                            'Date'			=> $date,
+                                            'Link'			=> $item->get_link(),
+                                            'Description'	=> $desc
+                                    )));
+                            }
+                            return $output;
+
+                    }
+                } else
+                    return false;
 	}  
 }
