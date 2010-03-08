@@ -1,6 +1,6 @@
 <?php
 
-class SiteInfo extends DashboardPlugin {
+class SiteInfo extends DashboardPlugin implements i18nEntityProvider {
 	static $position = "left";
 	static $sort = 0;
 	static $title = "Site info";
@@ -16,7 +16,7 @@ class SiteInfo extends DashboardPlugin {
 
 		$pages		= DataObject::get('SiteTree');
 		$pages		= $pages ? $pages->Count() : 0;
-		$pagesStr	= ($pages == 1) ? 'page' : 'pages';
+		$pagesStr	= ($pages == 1) ? _t('Dashboard.GenericPage') : _t('Dashboard.GenericPages');
 		$output->push(new ArrayData(array(
 			'Number' => $pages,
 			'Item' => $pagesStr
@@ -24,7 +24,7 @@ class SiteInfo extends DashboardPlugin {
 
 		$files		= DataObject::get('File', "ClassName <> 'Folder'");
 		$files		= $files ? $files->Count() : 0;
-		$filesStr	= ($files == 1) ? 'file' : 'files';
+		$filesStr	= ($files == 1) ? _t('Dashboard.GenericFile') : _t('Dashboard.GenericFiles');
 		$output->push(new ArrayData(array(
 			'Number' => $files,
 			'Item' => $filesStr
@@ -32,7 +32,7 @@ class SiteInfo extends DashboardPlugin {
 		
 		$members	= DataObject::get('Member');
 		$members	= $members ? $members->Count() : 0;
-		$membersStr	= ($members == 1) ? 'member' : 'members';
+		$membersStr	= ($members == 1) ? _t('Dashboard.GenericMember') : _t('Dashboard.GenericMembers');
 		$output->push(new ArrayData(array(
 			'Number' => $members,
 			'Item' => $membersStr

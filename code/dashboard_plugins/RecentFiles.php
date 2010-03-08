@@ -10,7 +10,7 @@
  * 
  */
 
-class RecentFiles extends DashboardPlugin {
+class RecentFiles extends DashboardPlugin implements i18nEntityProvider {
 	static $position = "snippet";
 	static $sort = 1;
 	static $title = "Recent files";

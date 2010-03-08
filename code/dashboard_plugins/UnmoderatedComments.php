@@ -10,7 +10,7 @@
  * $EditLink
  * $DeleteLink
  */
-class UnmoderatedComments extends DashboardPlugin {
+class UnmoderatedComments extends DashboardPlugin implements i18nEntityProvider {
 	static $position = "full_width";
 	static $sort = 1;
 	static $title = "Unmoderated comments";

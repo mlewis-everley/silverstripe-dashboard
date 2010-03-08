@@ -1,10 +1,10 @@
 <% if GenericSnippetList %>
 	<ul><% control GenericSnippetList %>
 		<li>
-			<% if DeleteLink %><a class="delete" title="Delete <% if Title %>$Title<% end_if %>" href="$DeleteLink"><span>Delete</span></a><% end_if %>
+			<% if DeleteLink %><a class="delete" title="<% _t('Dashboard.GenericDelete') %> <% if Title %>$Title<% end_if %>" href="$DeleteLink"><span><% _t('Dashboard.GenericDelete') %></span></a><% end_if %>
 			<% if EditLink %>
-				<a class="edit <% if EditPopup %>popup<% end_if %>" title="Edit <% if Title %>$Title<% end_if %>" href="$EditLink">
-					<span>Edit</span>
+				<a class="edit <% if EditPopup %>popup<% end_if %>" title="<% _t('Dashboard.GenericEdit') %> <% if Title %>$Title<% end_if %>" href="$EditLink">
+					<span><% _t('Dashboard.GenericEdit') %></span>
 				</a>
 			<% end_if %>
 			<% if Title %>

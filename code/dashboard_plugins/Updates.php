@@ -1,6 +1,6 @@
 <?php
 
-class Updates extends DashboardPlugin {
+class Updates extends DashboardPlugin implements i18nEntityProvider {
 	static $position	= "alerts";
 	static $sort		= 0;
 
@@ -54,9 +54,15 @@ class Updates extends DashboardPlugin {
 			$curVersion = $curVersion * 10;
 		
 		// If latest version if later than current version, return an update message.
-		if($latest > $curVersion && Permission::check(Updates::$view_level))
-			return 'Silverstripe ' . str_replace('/','',$verList[count($verList) - 1]) . ' is available. The latest version can be found <a href="' . self::$ss_link . '" title="Silverstripe download page">here</a>, or update your SVN.';
-		else
+		if($latest > $curVersion && Permission::check(Updates::$view_level)) {
+			$output = 'Silverstripe ';
+			$output .= str_replace('/','',$verList[count($verList) - 1]);
+			$output .= ' ' . _t('Dashboard.AlertsNewVersion') . ' ';
+			$output .= '<a href="' . self::$ss_link . '" title="' . _t('Dashboard.AlertsDownload') . '">' . _t('Dashboard.GenericHere') . '</a>,';
+			$output .= ' ' . _t('Dashboard.AlertsSVN') . ' ';
+			
+			return $output;
+		} else
 			return false;
 	}
 }

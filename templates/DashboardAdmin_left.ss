@@ -3,7 +3,7 @@
 		<div class="DashboardItem $Class">
 			<% control Plugin %>
 				<h2 {$IconCSS}>
-					<% if Link %><a href="$Link" title="View comments" class="floatright">$LinkText</a><% end_if %>
+					<% if Link %><a href="$Link" title="$LinkText" class="floatright">$LinkText</a><% end_if %>
 					$Title
 				</h2>
 			<% end_control %>

@@ -4,9 +4,9 @@
 	</div><% end_if %>
 
 	<h1 id="DashboardTitle">
-		<% _t('DASHBOARD','Dashboard') %>
+		<% _t('Dashboard.DashboardTitle') %>
 		<% if visit_site_link %>
-			<a class="revealLink" href="$visit_site_link" title="<% _t('VISIT SITE','Visit Site') %>">&raquo;<span><% _t('VISIT SITE','Visit Site') %></span></a>
+			<a class="revealLink" href="$visit_site_link" title="<% _t('Dashboard.VisitSite') %>">&raquo;<span><% _t('Dashboard.VisitSite') %></span></a>
 		<% end_if %>
 	</h1>
 
@@ -16,7 +16,7 @@
 				<% control Plugin %>
 					<h2 {$IconCSS}>
 						$Title
-						<% if Link %><a href="$Link" title="View all" class="revealLink">&raquo;<span>$LinkText</span></a><% end_if %>
+						<% if Link %><a href="$Link" title="$LinkText" class="revealLink">&raquo;<span>$LinkText</span></a><% end_if %>
 					</h2>
 				<% end_control %>
 				<div class="Plugin">
@@ -34,7 +34,7 @@
   			<% control Plugin %>
 				<h2 {$IconCSS}>
 					$Title
-					<% if Link %><a href="$Link" title="View all" class="revealLink">&raquo;<span>$LinkText</span></a><% end_if %>
+					<% if Link %><a href="$Link" title="$LinkText" class="revealLink">&raquo;<span>$LinkText</span></a><% end_if %>
 				</h2>
 			<% end_control %>
 			<div class="Plugin">$Plugin</div>

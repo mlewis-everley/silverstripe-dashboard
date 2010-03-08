@@ -11,7 +11,7 @@
  */
 
 
-class RecentPages extends DashboardPlugin {
+class RecentPages extends DashboardPlugin implements i18nEntityProvider {
 	static $position = "snippet";
 	static $sort = 0;
 	static $title = "Recent pages";

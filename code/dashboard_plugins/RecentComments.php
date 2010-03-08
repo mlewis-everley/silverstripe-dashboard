@@ -10,7 +10,7 @@
  * $EditLink
  * $DeleteLink
  */
-class RecentComments extends DashboardPlugin {
+class RecentComments extends DashboardPlugin implements i18nEntityProvider {
 	static $position = "full_width";
 	static $sort = 0;
 	static $title = "Recent comments";

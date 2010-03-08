@@ -7,9 +7,14 @@ class SSNews extends DashboardPlugin {
 	static $icon = "dashboard/images/22/feed.png";
 
 	/**
-	 * @var $rss_url = sets the url of the RSS feed
+	 * @var string sets the url of the RSS feed
 	 */
 	static $rss_url = 'http://www.silverstripe.org/blog/rss';
+	
+	/**
+	 * @var string link to the blog page
+	 */
+	static $rss_link = 'http://www.silverstripe.org/blog/';
 
 	/**
 	 * Uses SimplePie to pull in the news feed from $rss_url variable, process and cast it, then output it to a DataObjectSet

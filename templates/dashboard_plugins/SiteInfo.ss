@@ -1,4 +1,4 @@
-<p>At a glance:</p>
+<p><% _t('Dashboard.SiteInfoGlance') %>:</p>
 <% if Site %><ul>
 	<% control Site %><li>$Number $Item</li><% end_control %>
 </ul><% end_if %>

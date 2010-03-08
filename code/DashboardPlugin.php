@@ -82,6 +82,25 @@ abstract class DashboardPlugin extends ViewableData {
 		if(!in_array($plugin, self::$disabled_plugins))
 			self::$disabled_plugins[] = $plugin;
 	}
+	
+	/* 
+	 * Provide languagefile-info to the i18NTextCollector 
+	 * to add translations for static vars in all plugins 
+	 * that implement the i18nEntityProvider 
+	*/ 
+	function provideI18nEntities() { 
+		$entities = array(); 
+		$properties = array('title', 'link_text', 'caption', 'null_message'); 
+		foreach($properties as $property) { 
+			$val = $this->stat($property); 
+			if (!empty($val)) {
+				// equal to getTranslatedProperty() 
+				$index = $this->toLangVar($val);
+				$entities["{$index}"][] = str_replace("'", "\'", $val); 
+			} 
+		}
+		return $entities;
+	}
   
 	/**
 	 * Getter for $disabled_plugins
@@ -156,7 +175,7 @@ abstract class DashboardPlugin extends ViewableData {
 	 * @return string
 	 */      
 	public function getCaption() {
-		return $this->stat('caption');
+		return $this->getTranslatedProperty('caption');
 	}
 
 	/**
@@ -165,7 +184,7 @@ abstract class DashboardPlugin extends ViewableData {
 	 * @return string
 	 */      
 	public function getNullMessage() {
-		return $this->stat('null_message');
+		return $this->getTranslatedProperty('null_message');
 	}
 
 	/**
