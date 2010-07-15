@@ -11,7 +11,7 @@ if(
 }
 
 CMSMain::$url_segment = 'cms';
-CMSMenu::replace_menu_item('CMSMain', 'Site Content', 'admin/cms/', 'CMSMain', 41);
+CMSMenu::replace_menu_item('CMSMain', 'Pages', 'admin/cms/', 'CMSMain', 41);
 
 // Replace SilverstripeNavigator with SSNavigator
-Object::add_extension('ContentController', 'SSNController');
+//Object::add_extension('ContentController', 'SSNController');
