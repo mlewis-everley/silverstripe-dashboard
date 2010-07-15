@@ -39,12 +39,16 @@ class DashboardAdmin extends LeftAndMain {
 		Requirements::javascriptTemplate('dashboard/javascript/Dashboard.js',$vars);
 	}
 
-        public function getEditForm() {
+        public function getEditForm($id) {
             $fields = new FieldSet(
                 new TabSet('Root',
-                    new Tab(_t('DashboardAdmin.Widgets', 'Widgets'),
-                        new WidgetAreaEditor('LeftWidgets'),
-                        new WidgetAreaEditor('HalfWidthWidgets'),
+                    new Tab(_t('DashboardAdmin.LeftWidgets', 'Left'),
+                        new WidgetAreaEditor('LeftWidgets')
+                    ),
+                    new Tab(_t('DashboardAdmin.HalfWidthWidgets', 'Half Width'),
+                        new WidgetAreaEditor('HalfWidthWidgets')
+                    ),
+                    new Tab(_t('DashboardAdmin.FullWidthWidgets', 'Full Width'),
                         new WidgetAreaEditor('FullWidthWidgets')
                     )
                 )
