@@ -21,6 +21,10 @@ class DashboardAdmin extends LeftAndMain {
 	 */
 	static $default_position = 0;
 
+	static $allowed_actions = array(
+		'EditForm'
+	);
+
 	/**
 	 * Initialisation method called before accessing any functionality that RandomLinksAdmin has to offer
 	 */
@@ -40,23 +44,16 @@ class DashboardAdmin extends LeftAndMain {
 	}
 
         public function getEditForm($id) {
-            $fields = new FieldSet(
-                new TabSet('Root',
-                    new Tab(_t('DashboardAdmin.LeftWidgets', 'Left'),
-                        new WidgetAreaEditor('LeftWidgets')
-                    ),
-                    new Tab(_t('DashboardAdmin.HalfWidthWidgets', 'Half Width'),
-                        new WidgetAreaEditor('HalfWidthWidgets')
-                    ),
-                    new Tab(_t('DashboardAdmin.FullWidthWidgets', 'Full Width'),
-                        new WidgetAreaEditor('FullWidthWidgets')
-                    )
-                )
+            $record = DataObject::get_one('Dashboard');
+
+            $fields = $record->getCMSFields();
+
+            $actions = new FieldSet(
+                new FormAction('save',_t('DashboardAdmin.Save','Save'))
             );
 
-            $actions = new FieldSet();
-
             $form = new Form($this, "EditForm", $fields, $actions);
+            $form->loadDataFrom($record);
 
             return $form;
         }
@@ -68,6 +65,18 @@ class DashboardAdmin extends LeftAndMain {
 	public function visit_site_link() {
 		return Director::baseURL();
 	}
+
+        public function save($data,$form) {
+            $record = DataObject::get_one('Dashboard');
+
+            $form->saveInto($record, true);
+            $record->write();
+
+            FormResponse::status_message('Layout Updated', 'good');
+            FormResponse::add("$('Form_EditForm').resetElements();");
+
+            return FormResponse::respond();
+        }
 }
 
 ?>

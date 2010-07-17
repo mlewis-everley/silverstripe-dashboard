@@ -15,6 +15,24 @@ class Dashboard extends DataObject {
         'FullWidthWidgets'  => 'WidgetArea'
     );
 
+    public function getCMSFields() {
+        $fields = new FieldSet(
+            new TabSet("Root",
+                new Tab('Left',
+                    new WidgetAreaEditor('LeftWidgets')
+                ),
+                new Tab('HalfWidthWidgets',
+                    new WidgetAreaEditor('HalfWidthWidgets')
+                ),
+                new Tab('FullWidthWidgets',
+                    new WidgetAreaEditor('FullWidthWidgets')
+                )
+            )
+        );
+        
+        return $fields;
+    }
+
     /**
      * Setup a default Dashboard record if none exists
      */
