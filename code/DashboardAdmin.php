@@ -22,7 +22,8 @@ class DashboardAdmin extends LeftAndMain {
 	static $default_position = 0;
 
 	static $allowed_actions = array(
-		'EditForm'
+		'EditForm',
+                'Edit'
 	);
 
 	/**
@@ -76,6 +77,18 @@ class DashboardAdmin extends LeftAndMain {
             FormResponse::add("$('Form_EditForm').resetElements();");
 
             return FormResponse::respond();
+        }
+
+        public function getDashboard() {
+            return DataObject::get_one('Dashboard');
+        }
+
+        public function getEditMode() {
+            $mode = $this->urlParams['Action'];
+            if($mode == 'edit')
+                return true;
+            else
+                return false;
         }
 }
 
