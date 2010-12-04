@@ -4,9 +4,9 @@
 	</div><% end_if %>
 
 	<h1 id="DashboardTitle">
-		<% _t('Dashboard.DashboardTitle') %>
+		<% _t('Dashboard.DashboardTitle','Dashboard') %>
 		<% if visit_site_link %>
-			<a class="revealLink" href="$visit_site_link" title="<% _t('Dashboard.VisitSite') %>">&raquo;<span><% _t('Dashboard.VisitSite') %></span></a>
+			<a class="revealLink" href="$visit_site_link" title="<% _t('Dashboard.VisitSite','Visit Site') %>">&raquo;<span><% _t('Dashboard.VisitSite','Visit Site') %></span></a>
 		<% end_if %>
 	</h1>
 

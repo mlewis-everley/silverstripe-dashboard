@@ -57,9 +57,9 @@ class Updates extends DashboardPlugin implements i18nEntityProvider {
 		if($latest > $curVersion && Permission::check(Updates::$view_level)) {
 			$output = 'Silverstripe ';
 			$output .= str_replace('/','',$verList[count($verList) - 1]);
-			$output .= ' ' . _t('Dashboard.AlertsNewVersion') . ' ';
-			$output .= '<a href="' . self::$ss_link . '" title="' . _t('Dashboard.AlertsDownload') . '">' . _t('Dashboard.GenericHere') . '</a>,';
-			$output .= ' ' . _t('Dashboard.AlertsSVN') . ' ';
+			$output .= ' ' . _t('Dashboard.AlertsNewVersion','is available. The latest version can be found') . ' ';
+			$output .= '<a href="' . self::$ss_link . '" title="' . _t('Dashboard.AlertsDownload','Silverstripe download page') . '">' . _t('Dashboard.GenericHere','here') . '</a>,';
+			$output .= ' ' . _t('Dashboard.AlertsSVN','or update your SVN.') . ' ';
 			
 			return $output;
 		} else
