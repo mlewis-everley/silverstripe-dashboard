@@ -136,12 +136,14 @@
 /* Styling for alerts that appear in the top right */
 .Dashboard .Alerts {
 	padding: 0 10px;
-	background: #f2f2f2;
-	border: 1px solid #ccc;
+	background: #f99;
+	border: 1px solid maroon;
 }
 .Dashboard .Alerts .Alert {
 	padding: 10px 0;
 	font-size: 10pt;
+	color: #600;
+	font-weight: bold;
 }
 
 .Dashboard .Alerts .Alert * {
