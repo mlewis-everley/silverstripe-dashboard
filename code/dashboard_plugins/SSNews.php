@@ -9,7 +9,7 @@ class SSNews extends DashboardPlugin {
 	/**
 	 * @var string sets the url of the RSS feed
 	 */
-	static $rss_url = 'http://www.silverstripe.org/blog/rss';
+	static $rss_url = 'http://www.silverstripe.org/';
 	
 	/**
 	 * @var string link to the blog page
@@ -30,7 +30,7 @@ class SSNews extends DashboardPlugin {
 		elseif(file_exists($sp24))
 			include_once $sp24;
 
-                if(file_exists(self::$rss_url)) {
+                if(self::$rss_url) {
                     $output = new DataObjectSet();
 
                     $feed = new SimplePie(self::$rss_url, TEMP_FOLDER);
@@ -63,5 +63,9 @@ class SSNews extends DashboardPlugin {
                     }
                 } else
                     return false;
-	}  
+	}
+        
+        public function getRssLink() {
+            return self::$rss_link;
+        }
 }
