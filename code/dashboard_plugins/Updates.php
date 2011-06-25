@@ -48,7 +48,16 @@ class Updates extends DashboardPlugin implements i18nEntityProvider {
 		}
 		
 		// Retrieve the last item in the $verList array and converty to int
-		$latest = floor(str_replace(array('.','/'), '', $verList[count($verList) - 1]));
+		/*	
+		*	If $verList is NOT empty populate the version number
+		*	else set to 0
+		*	This check is in place incase the $sRequest fails.
+		*/
+		if($verList) {
+			$latest = floor(str_replace(array('.','/'), '', $verList[count($verList) - 1]));
+		} else {
+			$latest = 0;
+		}
 
 		if($curVersion < 200)
 			$curVersion = $curVersion * 10;
