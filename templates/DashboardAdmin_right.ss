@@ -1,44 +1,43 @@
 <div class="Dashboard tab">
-	<% if get_plugins(alerts) %><div class="Alerts">
-		<% control get_plugins(alerts) %>$Plugin<% end_control %>
-	</div><% end_if %>
+    <% if get_plugins(alerts) %><div class="Alerts">
+        <% control get_plugins(alerts) %>$Plugin<% end_control %>
+    </div><% end_if %>
 
-	<h1 id="DashboardTitle">
-		<% _t('Dashboard.DashboardTitle','Dashboard') %>
-		<% if visit_site_link %>
-			<a class="revealLink" href="$visit_site_link" title="<% _t('Dashboard.VisitSite','Visit Site') %>">&raquo;<span><% _t('Dashboard.VisitSite','Visit Site') %></span></a>
-		<% end_if %>
-	</h1>
+    <h1 id="DashboardTitle">
+        <% _t('Dashboard.DashboardTitle','Dashboard') %>
+        <% if visit_site_link %>
+            <a class="revealLink" href="$visit_site_link" title="<% _t('Dashboard.VisitSite','Visit Site') %>">&raquo;<span><% _t('Dashboard.VisitSite','Visit Site') %></span></a>
+        <% end_if %>
+    </h1>
 
-	<div class="DashboardItem Snippets">
-		<% control get_plugins(snippet) %>
-			<div class="Snippet <% if EvenOdd = odd %>snLeft<% end_if %>">
-				<% control Plugin %>
-					<h2 {$IconCSS}>
-						$Title
-						<% if Link %><a href="$Link" title="$LinkText" class="revealLink">&raquo;<span>$LinkText</span></a><% end_if %>
-					</h2>
-				<% end_control %>
-				<div class="Plugin">
-					<p>$Plugin.Caption</p>
-					$Plugin
-				</div>
-			</div>
-			<% if EvenOdd = even %><div class="clear"></div><% end_if %>
-		<% end_control %>
+    <div class="DashboardItem Snippets">
+        <% control get_plugins(snippet) %>
+            <div class="Snippet <% if EvenOdd = odd %>snLeft<% end_if %>">
+                <% control Plugin %>
+                    <h2 {$IconCSS}>
+                        $Title
+                        <% if Link %><a href="$Link" title="$LinkText" class="revealLink">&raquo;<span>$LinkText</span></a><% end_if %>
+                    </h2>
+                <% end_control %>
+                <div class="Plugin">
+                    <p>$Plugin.Caption</p>
+                    $Plugin
+                </div>
+            </div>
+            <% if EvenOdd = even %><div class="clear"></div><% end_if %>
+        <% end_control %>
+    </div>
 
-	</div>
-		
-	<% control get_plugins(full_width) %>
-  		<div class="DashboardItem FullWidth $Class">
-  			<% control Plugin %>
-				<h2 {$IconCSS}>
-					$Title
-					<% if Link %><a href="$Link" title="$LinkText" class="revealLink">&raquo;<span>$LinkText</span></a><% end_if %>
-				</h2>
-			<% end_control %>
-			<div class="Plugin">$Plugin</div>
-		</div>
-	<% end_control %>
+    <% control get_plugins(full_width) %>
+        <div class="DashboardItem FullWidth $Class">
+            <% control Plugin %>
+                <h2 {$IconCSS}>
+                    $Title
+                    <% if Link %><a href="$Link" title="$LinkText" class="revealLink">&raquo;<span>$LinkText</span></a><% end_if %>
+                </h2>
+            <% end_control %>
+            <div class="Plugin">$Plugin</div>
+        </div>
+    <% end_control %>
 
 </div>
