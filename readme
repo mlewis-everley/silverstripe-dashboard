@@ -1,3 +1,11 @@
+************ UPDATE **************
+
+This branch will be used for developing the Silverstripe 3 version of this module
+and will eventually be merged into master
+
+
+
+
 Please see the file INSTALL for install instructions:
 
 A very basic dashboard that displays recently the 10 most recenly edited pages,
