@@ -1,3 +1,12 @@
+******** UPDATE **********
+
+This branch is for ongoing support of Silverstripe 2.4.x.
+
+Development of version 3.0.0 will now be moved into a seperate branch, and eventually
+be merged back into master.
+
+
+
 Please see the file INSTALL for install instructions:
 
 A very basic dashboard that displays recently the 10 most recenly edited pages,
